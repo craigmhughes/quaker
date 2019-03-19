@@ -8,3 +8,13 @@ actor_suffix: Tester
 extensions:
     enabled:
         - Codeception\Extension\RunFailed
+modules:
+    config:
+        Db:
+            dsn: 'mysql:localhost;dbname=question_sys'
+            user: 'root'
+            password: 'password'
+            dump: tests/_data/_data.sql
+            populate: true
+            cleanup: false
+            reconnect: true

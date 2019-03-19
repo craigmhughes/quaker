@@ -18,7 +18,7 @@ class CreateResponsesTable extends Migration
             $table->integer('question_id')->unsigned();
             $table->foreign('question_id')->references('id')->on('questions')->onDelete('cascade');
             $table->string('type');
-            $table->text('repsonse');
+            $table->text('response');
             $table->timestamps();
         });
     }
