@@ -19,8 +19,6 @@ class CreateQuestionsTable extends Migration
             $table->integer('questionnaire_id')->unsigned();
             $table->foreign('questionnaire_id')->references('id')->on('questionnaires')->onDelete('cascade');
             $table->string('type');
-            $table->text('options');
-            $table->text('labels')->nullable();
             $table->timestamps();
         });
     }

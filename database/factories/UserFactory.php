@@ -6,6 +6,8 @@ use Faker\Generator as Faker;
 use App\Question;
 use App\Questionnaire;
 use App\Response;
+use App\Option;
+use App\Label;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,17 +46,36 @@ $factory->define(Question::class, function (Faker $faker) {
         'title' => $faker->sentence,
         'questionnaire_id' => rand(1,5),
         'type' => $q_type ? 'open' : 'closed',
-        'options' => $q_type ? '' : '["' . $faker->word . '", "' . $faker->word . '", "' . $faker->word . '"]',
-        'labels' => $q_type ? '' : '["' . $faker->word . '", "' . $faker->word . '", "' . $faker->word . '"]',
     ];
 });
+
+$factory->define(Option::class, function (Faker $faker) {
+
+  $q = Question::find(rand(1,10));
+
+    return [
+        'question_id' => $q->id,
+        'option' => $faker->word,
+        'order_no' => 0,
+    ];
+});
+
+function getOptions($q, $recheck){
+  $q = $recheck ? Question::find(rand(1,10)) : $q;
+  $r_type = $q->type == 'open';
+
+  $opt = Option::all()->where('question_id', $q->id);
+  return isset($opt) ? sizeof($opt->pluck('option')) > 0 ? $opt->pluck('option') : getOptions($q, true) : getOptions($q, true);
+}
 
 $factory->define(Response::class, function (Faker $faker) {
 
     // get question type -- true = open, false = closed
     $q = Question::find(rand(1,10));
     $r_type = $q->type == 'open';
-    $ans = str_replace(['[','"',']'], '', explode(',', $q->options)[0]);
+
+    $ans = getOptions($q, false)[0];
+
 
     return [
         'question_id' => $q->id,

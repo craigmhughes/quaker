@@ -1,0 +1,46 @@
+nav.navbar {
+  background: none;
+  border-top: 5px solid $brand-color;
+  color: #222;
+  height: auto!important;
+
+  & > .container {
+    display: flex;
+    padding: 30px 0;
+  }
+
+  & a.navbar-brand {
+    font-weight: 800;
+    color: #222;
+
+    & > i {
+      color: $brand-color;
+      margin-right: 10px;
+    }
+  }
+
+  & ul.navbar-nav {
+
+    & > li {
+      font-size: 0.9em;
+      font-weight: 800;
+
+      & > a {
+        color: #b0aeae;
+      }
+
+      &.primary {
+        background: $brand-color;
+        padding: 0 15px;
+        border-radius: 30px;
+        margin: 0 20px;
+
+        & > a {
+          color: #fff;
+        }
+      }
+    }
+  }
+
+
+}

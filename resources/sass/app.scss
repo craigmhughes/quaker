@@ -1,14 +1,37 @@
 
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito');
+@import url('https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900');
 
 // Variables
 @import 'variables';
 
+
+// @import 'settings';
+
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+// @import "../../vendor/bower_components/foundation/scss/foundation.scss";
+
+// Components
+@import "components";
 
 .navbar-laravel {
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+.container {
+  width: 90%;
+  margin: 0 auto;
+}
+
+#app {
+  font-family: $primary-font;
+}
+
+body {
+  background: #fff;
+  height: 100%;
 }

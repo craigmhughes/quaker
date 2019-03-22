@@ -1,0 +1,22 @@
+#landing-page {
+  height: 100%;
+}
+
+#intro-message {
+  width: 50%;
+  min-width: 300px;
+  max-width: 500px;
+  margin-top: 8em;
+
+  & > h1 {
+    font-size: 4.5em;
+    font-weight: 900;
+    line-height: 90%;
+    letter-spacing: -0.075rem;
+  }
+
+  & > p {
+    font-size: 1em;
+    color: grey;
+  }
+}

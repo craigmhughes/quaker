@@ -1,0 +1,7 @@
+{
+  "name": "blogadmin",
+  "version": "0.0.1",
+  "dependencies": {
+    "foundation": "~5.5.2"
+  }
+}
