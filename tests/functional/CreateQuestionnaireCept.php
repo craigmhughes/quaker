@@ -15,7 +15,8 @@ Auth::loginUsingId(1);
 $I->haveRecord('questionnaires', [
     'id' => '9000',
     'title' => 'Qre 1',
-    'user_id' => 1
+    'user_id' => 1,
+    'is_public' => false,
 ]);
 
 

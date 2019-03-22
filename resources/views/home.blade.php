@@ -22,8 +22,14 @@
               <tr>
                 <th scope="row">{{$value->title}}</th>
                 <td>{{$value->created_at}}</td>
-                <td>Otto</td>
-                <td>@mdo</td>
+                <td>{{$value->is_public}}</td>
+                <td>
+                  <?php $resp_val = 0; ?>
+                  @foreach (App\Question::all()->where('questionnaire_id', $value->id) as $key => $val)
+                    <?php $resp_val += sizeof(App\Response::all()->where('question_id', $val->id)) ?>
+                  @endforeach
+                  {{ $resp_val }}
+                </td>
               </tr>
             @endforeach
           </tbody>
