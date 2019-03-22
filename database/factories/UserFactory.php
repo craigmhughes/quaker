@@ -34,6 +34,7 @@ $factory->define(Questionnaire::class, function (Faker $faker) {
     return [
         'title' => $faker->sentence,
         'user_id' => 1,
+        'is_public' => rand(0,1) == 1,
     ];
 });
 
@@ -49,9 +50,14 @@ $factory->define(Question::class, function (Faker $faker) {
     ];
 });
 
+function getClosedQ(){
+  $q = Question::all()->where('type', 'closed')->pluck('id');
+  return sizeof($q) > 0 ? $q[rand(0, sizeof($q) > 1 ? sizeof($q)-1 : 0)] : getClosedQ();
+}
+
 $factory->define(Option::class, function (Faker $faker) {
 
-  $q = Question::find(rand(1,10));
+  $q = Question::find(getClosedQ());
 
     return [
         'question_id' => $q->id,
@@ -60,26 +66,57 @@ $factory->define(Option::class, function (Faker $faker) {
     ];
 });
 
-function getOptions($q, $recheck){
-  $q = $recheck ? Question::find(rand(1,10)) : $q;
-  $r_type = $q->type == 'open';
+// function getOptions($q, $recheck){
+//   $q = $recheck ? getPublicQ() : $q;
+//   $q = Question::find($q[rand(0,sizeof($q) > 1 ? sizeof($q)-1 : 0)]);
+//
+//   $r_type = $q->type == 'open';
+//
+//   $qs = Questionnaire::all()->where('is_public', 1)->pluck('id');
+//   $q = $recheck ? Question::all()->where('questionnaire_id', $qs[rand(0, sizeof($qs) > 1 ? sizeof($qs)-1 : 1)])->pluck('id') : $q;
+//   $q = Question::find($q[rand(0,sizeof($q))]);
+//   // if(Questionnaire::find($q->questionnaire_id)->is_public < 1){
+//   //   dd(true);
+//   //   return getOptions($q, true);
+//   // }
+//
+//   $r_type = $q->type == 'open';
+//
+//   $opt = Option::all()->where('question_id', $q->id);
+//   return isset($opt) ? sizeof($opt->pluck('option')) > 0 ? $opt->pluck('option') : getOptions($q, true) : getOptions($q, true);
+// }
 
-  $opt = Option::all()->where('question_id', $q->id);
-  return isset($opt) ? sizeof($opt->pluck('option')) > 0 ? $opt->pluck('option') : getOptions($q, true) : getOptions($q, true);
+function getPublicQ(){
+  $qs = Questionnaire::all()->where('is_public', 1)->pluck('id');
+  $q = Question::all()->where('questionnaire_id', $qs[rand(0, sizeof($qs) > 1 ? sizeof($qs)-1 : 0)])->pluck('id');
+  return sizeof($q) > 0 ? $q : getPublicQ();
+}
+
+function getOpts(){
+  // get question type -- true = open, false = closed
+  $q = getPublicQ();
+  $q = Question::find($q[rand(0,sizeof($q) > 1 ? sizeof($q)-1 : 0)]);
+  
+  if($q->type == "open"){
+    return [$q, null];
+  }
+
+  $ans = Option::all()->where('question_id', $q->id)->pluck('id');
+  return sizeof($ans) > 1 ? [$q,  Option::find($ans[0])->option] : getOpts();
 }
 
 $factory->define(Response::class, function (Faker $faker) {
+    $data = getOpts();
+    $q = $data[0];
+    $ans = $data[1];
 
-    // get question type -- true = open, false = closed
-    $q = Question::find(rand(1,10));
-    $r_type = $q->type == 'open';
-
-    $ans = getOptions($q, false)[0];
+    // dd($ans);
+    // dd(($q->type == "open") . " - " . $q->type . " - " . Option::all()->where('question_id', $q->id)->pluck('id') . ($q->type == "open" ? $faker->sentence : $ans) );
 
 
     return [
         'question_id' => $q->id,
-        'type' => $r_type ? 'open' : 'closed',
-        'response' => $r_type ? $faker->sentence : $ans,
+        'type' => $q->type,
+        'response' => $q->type == "open" ? $faker->sentence : $ans,
     ];
 });

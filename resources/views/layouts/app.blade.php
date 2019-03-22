@@ -24,7 +24,7 @@
   <div id="app">
     <nav class="navbar navbar-expand-md">
       <div class="container">
-        <a class="navbar-brand" href="/"><i class="fas fa-list-alt"></i>QMaker</a></a>
+        <a class="navbar-brand" @guest href="/" @else href="/home" @endif ><i class="fas fa-list-alt"></i>QMaker</a></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>

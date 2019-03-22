@@ -25,13 +25,13 @@
          // Category::truncate();
          // $this->call(CategoriesTableSeeder::class);
 
-         User::truncate();
+         // User::truncate();
          Questionnaire::truncate();
          Question::truncate();
          Response::truncate();
          Option::truncate();
 
-         factory(User::class, 50)->create();
+         // factory(User::class, 50)->create();
          factory(Questionnaire::class, 5)->create();
          factory(Question::class, 10)->create();
          factory(Option::class, 10)->create();

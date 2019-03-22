@@ -23,7 +23,7 @@ $I->haveRecord('questionnaires', [
 
 // create an article linked to one category
 // When
-$I->amOnPage('/dashboard');
+$I->amOnPage('/home');
 $I->see('Questionnaires', 'h1');
 $I->see('Qre 1');
 $I->dontSee('Qre 2');
@@ -42,19 +42,17 @@ $I->submitForm('#createqre', [
         'title' => 'Test Question 1',
         'type' => 'open',
         'options' => null,
-        'labels' => null,
       ],
       [
         'title' => 'Test Question 2',
         'type' => 'closed',
-        'options' => 'one||two||three',
-        'labels' => 'onel||twol||threel',
+        'options' => ['one','two','three'],
       ]
     )
 ]);
 
 // Then
-$I->seeCurrentUrlEquals('/dashboard');
+$I->seeCurrentUrlEquals('/home');
 $I->see('Questionnaires', 'h1');
 $I->see('Qre 1');
 $I->see('Qre 2');
