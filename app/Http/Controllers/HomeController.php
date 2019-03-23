@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Questionnaire;
 use App\Question;
 use App\Response;
+use Auth;
 
 
 class HomeController extends Controller
@@ -28,8 +29,10 @@ class HomeController extends Controller
     public function index()
     {
 
-        return view('home', [
-          'questionnaires' => Questionnaire::all(),
-        ]);
+      $qres = Questionnaire::all()->where('user_id', Auth::id());
+
+      return view('home', [
+        'questionnaires' => $qres,
+      ]);
     }
 }

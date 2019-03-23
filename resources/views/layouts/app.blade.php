@@ -31,7 +31,7 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
           <ul class="navbar-nav ml-auto">
             @guest
-              <li class="primary"><a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a></li>
+              <li class="btn-primary"><a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a></li>
               @if (Route::has('register'))
                 <li class="nav-item"><a class="nav-link" href="{{ route('register') }}">{{ __('Sign up') }}</a></li>
               @endif

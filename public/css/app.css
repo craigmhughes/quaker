@@ -10683,16 +10683,16 @@ nav.navbar ul.navbar-nav > li {
   font-weight: 800;
 }
 
-nav.navbar ul.navbar-nav > li > a {
-  color: #b0aeae;
-}
-
-nav.navbar ul.navbar-nav > li.primary {
+nav.navbar ul.navbar-nav > li.btn-primary {
   margin: 0 20px;
 }
 
-nav.navbar ul.navbar-nav > li.primary > a {
+nav.navbar ul.navbar-nav > li.btn-primary > a {
   color: #fff;
+}
+
+nav.navbar ul.navbar-nav > li > a {
+  color: #b0aeae;
 }
 
 #landing-page {
@@ -10729,8 +10729,8 @@ h1.title {
   display: flex;
 }
 
-.row-head .btn-primary {
-  float: right;
+#page-content > .table {
+  margin-top: 1em;
 }
 
 .navbar-laravel {
@@ -10758,5 +10758,9 @@ body {
   border-radius: 30px;
   outline: none;
   border: none;
+}
+
+.btn-primary > a {
+  color: #fff;
 }
 

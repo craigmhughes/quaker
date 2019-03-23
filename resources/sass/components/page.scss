@@ -9,3 +9,10 @@ h1.title {
   width: 100%;
   display: flex;
 }
+
+#page-content {
+
+  & > .table {
+    margin-top: 1em;
+  }
+}

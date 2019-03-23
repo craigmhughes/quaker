@@ -26,17 +26,18 @@ nav.navbar {
       font-size: 0.9em;
       font-weight: 800;
 
-      & > a {
-        color: #b0aeae;
-      }
-
-      &.primary {
+      &.btn-primary {
         margin: 0 20px;
 
         & > a {
           color: #fff;
         }
       }
+
+      & > a {
+        color: #b0aeae;
+      }
+
     }
   }
 
