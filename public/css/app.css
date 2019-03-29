@@ -10785,6 +10785,7 @@ nav.navbar ul.navbar-nav > li > a {
 #add-q {
   background: #34bf49;
   border: none;
+  outline: none;
   color: #fff;
   border-radius: 25px;
   padding: 15px 25px;

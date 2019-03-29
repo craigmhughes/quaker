@@ -26,30 +26,31 @@ var question_div = `
   </div>`;
 
 /**
-  *   Read Question Select Values
+  *   Read Question Select Values.
+  *
+  *   @param edit_el = Element that needs to be edited. Needs to be passed to build_inputs.
   */
-function get_selects(callback){
+function get_selects(edit_el){
   // Get Question Select Elements
   question_selects = document.getElementsByClassName('q-select');
-  select_vals = [];
+  select_vals = select_vals !== undefined ? select_vals : [] ;
 
   // Get Question Select Values
-  for (let i = 0; i < question_selects.length; i++) {
-    select_vals[i] = question_selects[i].value;
+  if (typeof edit_el === 'undefined') {
+    select_vals[question_selects.length-1] = question_selects[question_selects.length-1].value;
+  } else {
+    select_vals[edit_el] = question_selects[edit_el].value;
   }
 
   console.log(select_vals);
 
-  build_inputs();
-  if (typeof callback !== 'undefined'){
-      callback();
-  }
+  build_inputs(edit_el);
 }
 
 /**
-  * Create inputs based on type. Open = text input. Closed = checkboxes.
+  * Create inputs based on type. Open = text input. Closed = multiple choice.
   */
-function build_inputs() {
+function build_inputs(edit_el) {
   let inputs = document.getElementsByClassName('question-inputs');
   let input_count = 0;
 
@@ -62,9 +63,12 @@ function build_inputs() {
     </div>
   `;
 
-  for (let i = 0; i < inputs.length; i++) {
-    option_count(inputs[i]);
-    inputs[i].innerHTML = select_vals[i] === "open" ? open_element : closed_element;
+  if (typeof edit_el === 'undefined') {
+    option_count(inputs[inputs.length-1]);
+    inputs[inputs.length-1].innerHTML = select_vals[inputs.length-1] === "open" ? open_element : closed_element;
+  } else {
+    option_count(inputs[edit_el]);
+    inputs[edit_el].innerHTML = select_vals[edit_el] === "open" ? open_element : closed_element;
   }
 }
 
@@ -85,7 +89,7 @@ function option_count(el){
   */
 function create_question(){
 
-  q_sec.innerHTML += question_div;
+  q_sec.insertAdjacentHTML('beforeend', question_div);
 
   get_selects();
   update_question_count();
@@ -147,7 +151,7 @@ document.getElementById('question-section').addEventListener('click', function(e
         // Change Question Type
         parent.querySelector('input.q-type').value = question_type;
 
-        get_selects();
+        get_selects(i);
 
         // Add or remove 'add option' based on question type
         if(question_type === "closed" && parent.getElementsByClassName('add-option').length === 0){
@@ -156,6 +160,8 @@ document.getElementById('question-section').addEventListener('click', function(e
         } else if (question_type === "open" && parent.getElementsByClassName('add-option').length > 0){
           parent.removeChild(parent.getElementsByClassName('add-option')[0]);
         }
+
+        console.log(select_vals);
 
         // Force value change
         parent.getElementsByClassName('q-select')[0].value = select_vals[i];
@@ -180,7 +186,11 @@ document.getElementById('question-section').addEventListener('mousedown', (e)=>{
 });
 
 
+document.getElementById('add-q').addEventListener('click', ()=>{
+  create_question();
+});
+
+
 
 // Run Here
-
 create_question();
