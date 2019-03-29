@@ -10794,6 +10794,35 @@ nav.navbar ul.navbar-nav > li > a {
   margin-right: 5px;
 }
 
+.title {
+  font-weight: 600;
+  letter-spacing: -0.1rem;
+  outline: none;
+  border: none;
+  transition-duration: 0.75s;
+  border-bottom: 2px solid rgba(255, 255, 255, 0);
+}
+
+.title::-webkit-input-placeholder {
+  color: #222;
+}
+
+.title:-ms-input-placeholder {
+  color: #222;
+}
+
+.title::-ms-input-placeholder {
+  color: #222;
+}
+
+.title::placeholder {
+  color: #222;
+}
+
+.title:focus {
+  border-bottom: 2px solid #e3e3e3;
+}
+
 #questionnaire-container {
   width: 65%;
   min-width: 300px;
@@ -10818,33 +10847,7 @@ nav.navbar ul.navbar-nav > li > a {
 }
 
 #questionnaire-container > #questionnaire-form > .title {
-  font-weight: 600;
-  letter-spacing: -0.1rem;
-  outline: none;
-  border: none;
   font-size: 3em;
-  transition-duration: 0.75s;
-  border-bottom: 2px solid rgba(255, 255, 255, 0);
-}
-
-#questionnaire-container > #questionnaire-form > .title::-webkit-input-placeholder {
-  color: #222;
-}
-
-#questionnaire-container > #questionnaire-form > .title:-ms-input-placeholder {
-  color: #222;
-}
-
-#questionnaire-container > #questionnaire-form > .title::-ms-input-placeholder {
-  color: #222;
-}
-
-#questionnaire-container > #questionnaire-form > .title::placeholder {
-  color: #222;
-}
-
-#questionnaire-container > #questionnaire-form > .title:focus {
-  border-bottom: 2px solid #e3e3e3;
 }
 
 #questionnaire-container > #questionnaire-form > .desc {
@@ -10852,9 +10855,10 @@ nav.navbar ul.navbar-nav > li > a {
   outline: none;
   border: none;
   font-size: 1.25em;
-  height: 100px;
+  height: 50px;
   resize: none;
   font-weight: 300;
+  margin-bottom: 10px;
 }
 
 #questionnaire-container > #questionnaire-form #question-section > .question {
@@ -10875,23 +10879,26 @@ nav.navbar ul.navbar-nav > li > a {
   font-size: 1.8em;
   transition-duration: 0.75s;
   border-bottom: 2px solid rgba(255, 255, 255, 0);
-  text-transform: capitalize;
 }
 
 #questionnaire-container > #questionnaire-form #question-section > .question > .row > .title::-webkit-input-placeholder {
   color: #222;
+  text-transform: capitalize;
 }
 
 #questionnaire-container > #questionnaire-form #question-section > .question > .row > .title:-ms-input-placeholder {
   color: #222;
+  text-transform: capitalize;
 }
 
 #questionnaire-container > #questionnaire-form #question-section > .question > .row > .title::-ms-input-placeholder {
   color: #222;
+  text-transform: capitalize;
 }
 
 #questionnaire-container > #questionnaire-form #question-section > .question > .row > .title::placeholder {
   color: #222;
+  text-transform: capitalize;
 }
 
 #questionnaire-container > #questionnaire-form #question-section > .question > .row > .title:focus {
@@ -10943,6 +10950,24 @@ nav.navbar ul.navbar-nav > li > a {
   letter-spacing: -0.015em;
   border-radius: 5px;
   width: 100%;
+}
+
+#questionnaire-container > #questionnaire-form #question-section > .question > .question-inputs > .closed-option {
+  display: flex;
+  min-width: 50px;
+}
+
+#questionnaire-container > #questionnaire-form #question-section > .question > .question-inputs > .closed-option > input.checkbox {
+  margin: 5px 15px 5px 5px;
+}
+
+#questionnaire-container > #questionnaire-form #question-section > .question > .question-inputs > .closed-option > input.closed-value {
+  font-weight: 500;
+  letter-spacing: -0.025em;
+}
+
+#questionnaire-container > #questionnaire-form #question-section > .question:last-child {
+  border: none;
 }
 
 .navbar-laravel {
