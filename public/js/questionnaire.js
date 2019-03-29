@@ -15,7 +15,8 @@ var select_div = `
   </div>`;
 
 // Question HTML
-var question_div = `
+var get_question_div = ()=>{
+  return `
   <div class="question">
     <div class="row">
       <input type="text" class="title" name="questions[${question_count}][title]" autocomplete="off" placeholder="Untitled Open Question"/>
@@ -23,7 +24,7 @@ var question_div = `
     </div>
     <input type="hidden" class="q-type" name="questions[${question_count}][type]" value="open"/>
     <div class="question-inputs"></div>
-  </div>`;
+  </div>`};
 
 /**
   *   Read Question Select Values.
@@ -59,7 +60,7 @@ function build_inputs(edit_el) {
   let closed_element = `
     <div class="closed-option">
       <input type="checkbox" class="checkbox">
-      <input class="closed-value title" autocomplete="off" name="questions[${question_count}][options][${input_count}]" placeholder="Option">
+      <input class="closed-value title" autocomplete="off" name="questions[${question_count-1}][options][${input_count}]" placeholder="Option">
     </div>
   `;
 
@@ -76,8 +77,8 @@ function build_inputs(edit_el) {
   * Get total num of questions and assign to question_count.
   */
 function update_question_count(){
-  question_count = document.getElementsByClassName('question').length - 1;
-  console.log(question_count);
+  question_count = document.getElementsByClassName('question').length;
+
 }
 
 function option_count(el){
@@ -89,10 +90,11 @@ function option_count(el){
   */
 function create_question(){
 
-  q_sec.insertAdjacentHTML('beforeend', question_div);
+  q_sec.insertAdjacentHTML('beforeend', get_question_div());
 
   get_selects();
   update_question_count();
+  console.log(question_count);
 }
 
 function create_option(el){
