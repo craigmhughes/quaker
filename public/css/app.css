@@ -10718,19 +10718,231 @@ nav.navbar ul.navbar-nav > li > a {
   color: grey;
 }
 
-h1.title {
-  font-weight: 300;
-  letter-spacing: -0.05em;
-  font-size: 1.8em;
-}
-
 .row-head {
   width: 100%;
   display: flex;
 }
 
+.row-head > h1.title {
+  font-weight: 300;
+  letter-spacing: -0.05em;
+  font-size: 1.8em;
+}
+
 #page-content > .table {
   margin-top: 1em;
+}
+
+#page-content > .table > thead > tr {
+  text-transform: uppercase;
+  font-size: 0.7em;
+  letter-spacing: 0.1em;
+}
+
+#page-content > .table > thead > tr > th {
+  border: none;
+  color: #979797;
+}
+
+#page-content > .table > thead > tr > th:first-child {
+  border-radius: 100px 0 0 100px;
+  padding-left: 30px;
+}
+
+#page-content > .table > thead > tr > th:last-child {
+  border-radius: 0 100px 100px 0;
+  padding-right: 30px;
+}
+
+#page-content > .table > tbody > tr:first-child td,
+#page-content > .table > tbody > tr:first-child th {
+  border-top: none;
+}
+
+#page-content > .table > tbody td,
+#page-content > .table > tbody th {
+  padding: 1.5em 0;
+}
+
+#page-content > .table > tbody td {
+  font-weight: 500;
+  font-size: 0.9em;
+  vertical-align: middle;
+}
+
+#page-content > .table > tbody td > i.fa-circle {
+  font-size: 0.4em;
+  margin: 0 20px 0 10px;
+  position: relative;
+  top: -2.5px;
+  color: grey;
+}
+
+#page-content > .table > tbody td > i.fa-circle.public {
+  color: #34bf49;
+}
+
+#add-q {
+  background: #34bf49;
+  border: none;
+  color: #fff;
+  border-radius: 25px;
+  padding: 15px 25px;
+}
+
+#add-q > i {
+  margin-right: 5px;
+}
+
+#questionnaire-container {
+  width: 65%;
+  min-width: 300px;
+  max-width: 1800px;
+  margin: 0 auto;
+}
+
+#questionnaire-container > #questionnaire-form {
+  width: 100%;
+}
+
+#questionnaire-container > #questionnaire-form > .row-head {
+  margin: 0;
+  margin-bottom: 2.5em;
+}
+
+#questionnaire-container > #questionnaire-form > .row-head h3.title {
+  font-size: 1.25em;
+  letter-spacing: -0.05em;
+  color: #b0aeae;
+  margin: 7.5px 0;
+}
+
+#questionnaire-container > #questionnaire-form > .title {
+  font-weight: 600;
+  letter-spacing: -0.1rem;
+  outline: none;
+  border: none;
+  font-size: 3em;
+  transition-duration: 0.75s;
+  border-bottom: 2px solid rgba(255, 255, 255, 0);
+}
+
+#questionnaire-container > #questionnaire-form > .title::-webkit-input-placeholder {
+  color: #222;
+}
+
+#questionnaire-container > #questionnaire-form > .title:-ms-input-placeholder {
+  color: #222;
+}
+
+#questionnaire-container > #questionnaire-form > .title::-ms-input-placeholder {
+  color: #222;
+}
+
+#questionnaire-container > #questionnaire-form > .title::placeholder {
+  color: #222;
+}
+
+#questionnaire-container > #questionnaire-form > .title:focus {
+  border-bottom: 2px solid #e3e3e3;
+}
+
+#questionnaire-container > #questionnaire-form > .desc {
+  letter-spacing: -0.05rem;
+  outline: none;
+  border: none;
+  font-size: 1.25em;
+  height: 100px;
+  resize: none;
+  font-weight: 300;
+}
+
+#questionnaire-container > #questionnaire-form #question-section > .question {
+  padding: 30px 0px;
+  border-bottom: 1px solid #d6d6d6;
+}
+
+#questionnaire-container > #questionnaire-form #question-section > .question > .row {
+  margin: 0;
+  padding: 0;
+}
+
+#questionnaire-container > #questionnaire-form #question-section > .question > .row > .title {
+  font-weight: 400;
+  letter-spacing: -0.1rem;
+  outline: none;
+  border: none;
+  font-size: 1.8em;
+  transition-duration: 0.75s;
+  border-bottom: 2px solid rgba(255, 255, 255, 0);
+  text-transform: capitalize;
+}
+
+#questionnaire-container > #questionnaire-form #question-section > .question > .row > .title::-webkit-input-placeholder {
+  color: #222;
+}
+
+#questionnaire-container > #questionnaire-form #question-section > .question > .row > .title:-ms-input-placeholder {
+  color: #222;
+}
+
+#questionnaire-container > #questionnaire-form #question-section > .question > .row > .title::-ms-input-placeholder {
+  color: #222;
+}
+
+#questionnaire-container > #questionnaire-form #question-section > .question > .row > .title::placeholder {
+  color: #222;
+}
+
+#questionnaire-container > #questionnaire-form #question-section > .question > .row > .title:focus {
+  border-bottom: 2px solid #e3e3e3;
+}
+
+#questionnaire-container > #questionnaire-form #question-section > .question > .row > .question-select {
+  color: #6d6d6d;
+  border: 1.5px solid #6d6d6d;
+  border-radius: 35px;
+  outline: none;
+}
+
+#questionnaire-container > #questionnaire-form #question-section > .question > .row > .question-select > i {
+  font-size: 0.8em;
+  pointer-events: none;
+  position: relative;
+  left: -20px;
+}
+
+#questionnaire-container > #questionnaire-form #question-section > .question > .row > .question-select > select {
+  color: #6d6d6d;
+  background: none;
+  border: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 1px;
+  text-overflow: "";
+  outline: none;
+  padding: 10px 15px;
+  width: 90px;
+  position: relative;
+  left: 5px;
+}
+
+#questionnaire-container > #questionnaire-form #question-section > .question > .row > .question-select > select > option {
+  padding: 5px 10px;
+  -webkit-appearance: none;
+  color: #6d6d6d;
+}
+
+#questionnaire-container > #questionnaire-form #question-section > .question > .question-inputs {
+  padding: 10px 0;
+}
+
+#questionnaire-container > #questionnaire-form #question-section > .question > .question-inputs > .open-input {
+  padding: 7.5px 15px;
+  border: 1px solid #6d6d6d;
+  letter-spacing: -0.015em;
+  border-radius: 5px;
+  width: 100%;
 }
 
 .navbar-laravel {
@@ -10745,6 +10957,7 @@ h1.title {
 
 #app {
   font-family: "Prompt", sans-serif;
+  font-size: 14px;
 }
 
 body {
@@ -10754,7 +10967,7 @@ body {
 
 .btn-primary {
   background: #34bf49;
-  padding: 0 15px;
+  padding: 10px 30px;
   border-radius: 30px;
   outline: none;
   border: none;
@@ -10762,5 +10975,17 @@ body {
 
 .btn-primary > a {
   color: #fff;
+}
+
+.noselect {
+  -webkit-user-select: none;
+  /* Chrome all / Safari all */
+  -moz-user-select: none;
+  /* Firefox all */
+  -ms-user-select: none;
+  /* IE 10+ */
+  user-select: none;
+  /* Likely future */
+  cursor: default;
 }
 

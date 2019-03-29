@@ -34,7 +34,7 @@ $I->click('Create Questionnaire');
 // Then
 $I->amOnPage('/questionnaires/create');
 // And
-$I->see('Create Questionnaire', 'h1');
+$I->see('New Questionnaire', 'h3');
 
 $I->submitForm('#createqre', [
     'title' => 'Qre 2',

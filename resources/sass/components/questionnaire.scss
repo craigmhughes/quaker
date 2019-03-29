@@ -1,0 +1,149 @@
+#add-q {
+  background: $brand-color;
+  border: none;
+  color: #fff;
+  border-radius: 25px;
+  padding: 15px 25px;
+
+  & > i {
+    margin-right: 5px;
+  }
+
+}
+
+#questionnaire-container {
+  width: 65%;
+  min-width: 300px;
+  max-width: 1800px;
+  margin: 0 auto;
+
+  & > #questionnaire-form {
+    width: 100%;
+
+
+    & > .row-head {
+      margin: 0;
+      margin-bottom: 2.5em;
+
+
+      h3.title {
+        font-size: 1.25em;
+        letter-spacing: -0.05em;
+        color: #b0aeae;
+        margin: 7.5px 0;
+      }
+    }
+
+    & > .title {
+      font-weight: 600;
+      letter-spacing: -0.1rem;
+      outline: none;
+      border: none;
+      font-size: 3em;
+      transition-duration: 0.75s;
+      border-bottom: 2px solid rgba(255,255,255,0);
+
+      &::placeholder {
+        color: #222;
+      }
+
+      &:focus {
+        border-bottom: 2px solid #e3e3e3;
+      }
+    }
+
+    & > .desc {
+      letter-spacing: -0.05rem;
+      outline: none;
+      border: none;
+      font-size: 1.25em;
+      height: 100px;
+      resize: none;
+      font-weight: 300;
+    }
+
+
+    #question-section {
+
+      & > .question {
+        padding: 30px 0px;
+        border-bottom: 1px solid #d6d6d6;
+
+        & > .row {
+          margin: 0;
+          padding: 0;
+
+          & > .title {
+            font-weight: 400;
+            letter-spacing: -0.1rem;
+            outline: none;
+            border: none;
+            font-size: 1.8em;
+            transition-duration: 0.75s;
+            border-bottom: 2px solid rgba(255,255,255,0);
+            text-transform: capitalize;
+
+            &::placeholder {
+              color: #222;
+            }
+
+            &:focus {
+              border-bottom: 2px solid #e3e3e3;
+            }
+          }
+
+          & > .question-select {
+            // background: #d6d6d6;
+            color: #6d6d6d;
+            border: 1.5px solid #6d6d6d;
+            border-radius: 35px;
+            outline: none;
+
+            & > i {
+              font-size: 0.8em;
+              pointer-events: none;
+              position: relative;
+              left: -20px;
+            }
+
+            & > select {
+              color: #6d6d6d;
+              background: none;
+              border: none;
+              -webkit-appearance: none;
+              -moz-appearance: none;
+              text-indent: 1px;
+              text-overflow: '';
+              outline: none;
+              padding: 10px 15px;
+              width: 90px;
+              position: relative;
+              left: 5px;
+
+              & > option {
+                padding: 5px 10px;
+                -webkit-appearance: none;
+                color: #6d6d6d;
+              }
+            }
+          }
+
+
+        }
+
+
+        & > .question-inputs {
+          padding: 10px 0;
+
+          & > .open-input {
+            padding: 7.5px 15px;
+            border: 1px solid #6d6d6d;
+            letter-spacing: -0.015em;
+            border-radius: 5px;
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}

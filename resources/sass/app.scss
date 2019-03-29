@@ -28,6 +28,7 @@
 
 #app {
   font-family: $primary-font;
+  font-size: 14px;
 }
 
 body {
@@ -37,7 +38,7 @@ body {
 
 .btn-primary {
   background: $brand-color;
-  padding: 0 15px;
+  padding: 10px 30px;
   border-radius: 30px;
   outline: none;
   border: none;
@@ -45,4 +46,12 @@ body {
   & > a {
     color: #fff;
   }
+}
+
+.noselect {
+  -webkit-user-select: none;  /* Chrome all / Safari all */
+  -moz-user-select: none;     /* Firefox all */
+  -ms-user-select: none;      /* IE 10+ */
+  user-select: none;          /* Likely future */
+  cursor: default;
 }
