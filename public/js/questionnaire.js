@@ -29,6 +29,7 @@ var get_question_div = ()=>{
     </div>
     <input type="hidden" class="q-type" name="questions[${question_count}][type]" value="open"/>
     <div class="question-inputs"></div>
+    <i class="fas fa-minus-circle remove-question"></i>
   </div>`};
 
 var get_closed_element = (input_count, el)=>{
@@ -54,11 +55,15 @@ var get_closed_element = (input_count, el)=>{
 function get_selects(edit_el){
   // Get Question Select Elements
   question_selects = document.getElementsByClassName('q-select');
-  select_vals = select_vals !== undefined ? select_vals : [] ;
+  select_vals = select_vals !== undefined ? question_selects.length < select_vals.length ? [] : select_vals : [] ;
 
   // Get Question Select Values
   if (typeof edit_el === 'undefined') {
-    select_vals[question_selects.length-1] = question_selects[question_selects.length-1].value;
+
+    for(let i = 0; i < question_selects.length; i++){
+      select_vals[i] = question_selects[i].value;
+    }
+
   } else {
     select_vals[edit_el] = question_selects[edit_el].value;
   }
@@ -108,6 +113,44 @@ function create_question(){
   get_selects();
   update_question_count();
   console.log(question_count);
+}
+
+
+function remove_question(el){
+  let el_question = el.parentNode;
+  let parent_index = 0;
+
+  let questions = document.getElementsByClassName('question');
+
+  for(let i = 0; i < questions.length; i++){
+    if(el_question === questions[i]){
+      parent_index = i;
+      break;
+    }
+  }
+
+  if(questions.length > 1){
+    el_question.parentNode.removeChild(el_question);
+
+    questions = document.getElementsByClassName('question');
+
+    update_question_count();
+
+    for (let i = 0; i < questions.length; i++){
+        // Re-reads index. Assigns new index to inputs.
+        questions[i].getElementsByClassName('title')[0].setAttribute('name', `questions[${i}][title]`);
+        questions[i].getElementsByClassName('q-type')[0].setAttribute('name', `questions[${i}][type]`);
+
+        let closed_ops = questions[i].getElementsByClassName('closed-value');
+
+        if(closed_ops.length > 0){
+          for(let i = 0; i < closed_ops.length; i++){
+            closed_ops[i].setAttribute('name', closed_ops[i].getAttribute('name').replace(/questions\[\d+\]/g, `questions[${i}]`));
+
+          }
+        }
+    }
+  }
 }
 
 function create_option(el){
@@ -218,8 +261,13 @@ document.getElementById('question-section').addEventListener('click', function(e
     }
   } else if (e.target.className === "add-option") {
     create_option(e.target.parentNode);
+
   } else if (e.target.className.includes("remove-option")) {
     remove_option(e.target);
+
+  } else if (e.target.className.includes("remove-question")) {
+    remove_question(e.target);
+
   }
 
 
