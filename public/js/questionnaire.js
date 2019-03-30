@@ -3,6 +3,11 @@ var q_sec = document.getElementById('question-section');
 var question_selects, select_vals;
 var question_count = 0;
 
+var get_question_count = ()=>{
+  update_question_count();
+  return question_count;
+}
+
 
 // Select Question Type Menu
 var select_div = `
@@ -25,6 +30,21 @@ var get_question_div = ()=>{
     <input type="hidden" class="q-type" name="questions[${question_count}][type]" value="open"/>
     <div class="question-inputs"></div>
   </div>`};
+
+var get_closed_element = (input_count, el)=>{
+  return `
+  <div class="closed-option">
+    <div class="pretty p-curve p-pulse p-icon">
+      <input type="checkbox" />
+      <div class="state p-success">
+          <i class="icon fas fa-check"></i>
+          <label></label>
+      </div>
+    </div>
+    <input class="closed-value title" autocomplete="off" name="questions[${typeof el === 'undefined' ? get_question_count()-1 : el}][options][${input_count}]" placeholder="Option">
+    <i class="fas fa-minus-circle remove-option"></i>
+  </div>
+`};
 
 /**
   *   Read Question Select Values.
@@ -57,19 +77,12 @@ function build_inputs(edit_el) {
 
   let open_element = `<input class="open-input noselect" type="text" placeholder="Enter Answer Here..."/>`;
 
-  let closed_element = `
-    <div class="closed-option">
-      <input type="checkbox" class="checkbox">
-      <input class="closed-value title" autocomplete="off" name="questions[${question_count-1}][options][${input_count}]" placeholder="Option">
-    </div>
-  `;
-
   if (typeof edit_el === 'undefined') {
     option_count(inputs[inputs.length-1]);
-    inputs[inputs.length-1].innerHTML = select_vals[inputs.length-1] === "open" ? open_element : closed_element;
+    inputs[inputs.length-1].innerHTML = select_vals[inputs.length-1] === "open" ? open_element : get_closed_element(input_count);
   } else {
     option_count(inputs[edit_el]);
-    inputs[edit_el].innerHTML = select_vals[edit_el] === "open" ? open_element : closed_element;
+    inputs[edit_el].innerHTML = select_vals[edit_el] === "open" ? open_element : get_closed_element(input_count, edit_el);
   }
 }
 
@@ -101,13 +114,18 @@ function create_option(el){
 
   let q_inputs = el.getElementsByClassName('question-inputs')[0];
   let input_count = option_count(q_inputs);
+  let q_index = 0;
 
-  let closed_element = `
-    <div class="closed-option">
-      <input type="checkbox" class="checkbox">
-      <input class="closed-value title" autocomplete="off" name="questions[${question_count}][options][${input_count}]" placeholder="Option">
-    </div>
-  `;
+  // Get Quesiton index by comparing elements.
+  let all_inputs = document.getElementsByClassName('question-inputs');
+  for(let i = 0; i < all_inputs.length; i++){
+    if(q_inputs === all_inputs[i]){
+      q_index = i;
+      break;
+    }
+  }
+
+
 
   let titles = q_inputs.getElementsByClassName('title');
   let current_input_vals = [];
@@ -122,7 +140,7 @@ function create_option(el){
   }
 
   if(!found_null){
-    q_inputs.innerHTML = q_inputs.innerHTML + closed_element;
+    q_inputs.innerHTML = q_inputs.innerHTML + get_closed_element(input_count);
   }
 
   // Re-assign remembered values.
@@ -130,6 +148,34 @@ function create_option(el){
      titles[i].value = current_input_vals[i];
   }
 
+}
+
+function remove_option(el){
+  let el_option = el.parentNode;
+  let parent_index = 0;
+
+  let questions = document.getElementsByClassName('question');
+
+  for(let i = 0; i < questions.length; i++){
+    if(el_option.parentNode.parentNode === questions[i]){
+      parent_index = i;
+      break;
+    }
+  }
+
+
+  let child_options = el_option.parentNode.getElementsByClassName('closed-option');
+
+  if(child_options.length > 1){
+    el_option.parentNode.removeChild(el_option);
+
+    for (let i = 0; i < child_options.length; i++){
+      // Re-reads index if more than one option exists.
+      if(i > 0){
+        child_options[i].getElementsByClassName('title')[0].setAttribute('name', `questions[${parent_index}][options][${i}]`);
+      }
+    }
+  }
 }
 
 
@@ -172,6 +218,8 @@ document.getElementById('question-section').addEventListener('click', function(e
     }
   } else if (e.target.className === "add-option") {
     create_option(e.target.parentNode);
+  } else if (e.target.className.includes("remove-option")) {
+    remove_option(e.target);
   }
 
 

@@ -21,3 +21,12 @@ $yellow: #ffed4a;
 $green: #38c172;
 $teal: #4dc0b5;
 $cyan: #6cb2eb;
+
+// buttons
+@mixin btn-secondary {
+  color: #6d6d6d;
+  border: 1.5px solid #6d6d6d;
+  border-radius: 35px;
+  outline: none;
+  background: none;
+}

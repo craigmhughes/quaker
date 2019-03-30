@@ -100,10 +100,7 @@
 
           & > .question-select {
             // background: #d6d6d6;
-            color: #6d6d6d;
-            border: 1.5px solid #6d6d6d;
-            border-radius: 35px;
-            outline: none;
+            @include btn-secondary;
 
             & > i {
               font-size: 0.8em;
@@ -150,23 +147,44 @@
           }
 
           & > .closed-option {
-            display: flex;
+            // display: flex;
             min-width: 50px;
 
-            & > input.checkbox {
-              margin: 5px 15px 5px 5px;
-            }
+            // & > input.checkbox {
+            //   margin: 5px 15px 5px 5px;
+            // }
 
             & > input.closed-value {
               font-weight: 500;
               letter-spacing: -0.025em;
             }
+
+            & > .pretty {
+
+              & i.icon {
+                font-size: 0.6em;
+                padding: 1.5em 0.8em;
+              }
+            }
+          }
+        }
+
+        & > .add-option {
+          @include btn-secondary;
+          padding: 10px 25px;
+          font-weight: 600;
+          font-size: 0.65rem;
+
+          & > i {
+            margin: 0px 10px 0 -2.5px;
           }
         }
 
         &:last-child {
           border: none;
         }
+
+
       }
     }
   }
