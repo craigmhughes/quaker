@@ -14,4 +14,14 @@ class Question extends Model
   protected $fillable = [
       'title', 'questionnaire_id', 'type', 'options', 'labels',
   ];
+
+  public function questionnaire()
+  {
+      return $this->belongsTo('App\Questionnaire','questionnaire_id');
+  }
+
+  public function options()
+  {
+      return $this->hasMany('App\Option');
+  }
 }

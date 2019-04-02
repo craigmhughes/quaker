@@ -11,7 +11,16 @@
             {{ csrf_field() }}
         <div class="row row-head d-flex">
           <h3 class="title">New Questionnaire</h3>
-          {!! Form::submit('Save', ['class' => 'btn btn-primary ml-auto']) !!}
+          <div class="ml-auto right">
+            <p class=" ml-auto">Make Public</p>
+            <div class="pretty p-switch p-fill">
+                <input type="checkbox" name="is_public" />
+                <div class="state p-success">
+                    <label> </label>
+                </div>
+            </div>
+            {!! Form::submit('Save', ['class' => 'btn btn-primary ml-auto']) !!}
+          </div>
           {{-- <button  class="btn btn-primary ml-auto"><a href="{{ route('questionnaire/') }}">Save</a></button> --}}
         </div>
 

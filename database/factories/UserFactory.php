@@ -33,6 +33,7 @@ $factory->define(User::class, function (Faker $faker) {
 $factory->define(Questionnaire::class, function (Faker $faker) {
     return [
         'title' => $faker->sentence,
+        'description' => $faker->sentence,
         'user_id' => 1,
         'is_public' => rand(0,1) == 1,
     ];

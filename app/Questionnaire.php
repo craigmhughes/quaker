@@ -13,6 +13,14 @@ class Questionnaire extends Model
    * @var array
    */
   protected $fillable = [
-      'title', 'user_id',
+      'title', 'description', 'is_public', 'user_id',
   ];
+
+  /**
+     * Get the comments for the blog post.
+     */
+    public function questions()
+    {
+        return $this->hasMany('App\Question');
+    }
 }

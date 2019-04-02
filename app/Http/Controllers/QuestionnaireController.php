@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Questionnaire;
+use Auth;
 
 class QuestionnaireController extends Controller
 {
@@ -35,7 +37,50 @@ class QuestionnaireController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
+
+        $is_public = isset($request['is_public']) ? 1 : 0;
+
+        $this->validate($request,[
+          'title' => 'required',
+          'description' => 'nullable',
+          'questions' => 'required',
+          'is_public' => 'nullable',
+        ]);
+
+        $questionnaire = Questionnaire::create([
+          'title' => $request['title'],
+          'description' => $request['description'],
+          'user_id' => Auth::id(),
+          'is_public' => $is_public
+        ]);
+
+        // dd($request['questions']);
+
+        foreach($request['questions'] as $question){
+
+          $new_question = $questionnaire->questions()->create([
+            'title' => $question['title'],
+            'type' => $question['type'],
+            'questionnaire_id' => $questionnaire['id'],
+          ]);
+
+          if($question['type'] == "closed"){
+            foreach($question['options'] as $option){
+
+              $new_question->options()->create([
+                'question_id' => $new_question['id'],
+                'option' => $option,
+                'order_no' => 0,
+              ]);
+
+
+            }
+          }
+        }
+
+
+
+        return redirect('home');
     }
 
     /**

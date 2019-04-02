@@ -14,4 +14,9 @@ class Option extends Model
   protected $fillable = [
       'questionnaire_id', 'option', 'order_no',
   ];
+
+  public function question()
+  {
+      return $this->belongsTo('App\Question','question_id');
+  }
 }

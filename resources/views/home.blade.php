@@ -21,7 +21,7 @@
           @foreach ($questionnaires as $key => $value)
             <tr>
               <th scope="row">{{$value->title}}</th>
-              <td>{{date('dS F Y', strtotime($value->created_at))}}</td>
+              <td>{{date('jS F Y', strtotime($value->created_at))}}</td>
               <td><i class="fas fa-circle {{$value->is_public ? 'public' : 'private'}}"></i>{{$value->is_public ? 'Public' : 'Private'}}</td>
               <td>
                 <?php $resp_val = 0; ?>

@@ -68,8 +68,6 @@ function get_selects(edit_el){
     select_vals[edit_el] = question_selects[edit_el].value;
   }
 
-  console.log(select_vals);
-
   build_inputs(edit_el);
 }
 
@@ -112,7 +110,6 @@ function create_question(){
 
   get_selects();
   update_question_count();
-  console.log(question_count);
 }
 
 
@@ -251,8 +248,6 @@ document.getElementById('question-section').addEventListener('click', function(e
         } else if (question_type === "open" && parent.getElementsByClassName('add-option').length > 0){
           parent.removeChild(parent.getElementsByClassName('add-option')[0]);
         }
-
-        console.log(select_vals);
 
         // Force value change
         parent.getElementsByClassName('q-select')[0].value = select_vals[i];
