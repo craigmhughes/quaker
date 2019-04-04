@@ -10543,7 +10543,8 @@ nav.navbar ul.navbar-nav > li > a {
   color: #6d6d6d;
 }
 #questionnaire-container > #questionnaire-form #question-section > .question > .question-inputs {
-  padding: 10px 0;
+  padding: 10px 0 10px 10px;
+  margin-bottom: 15px;
 }
 #questionnaire-container > #questionnaire-form #question-section > .question > .question-inputs > .open-input {
   padding: 7.5px 15px;
@@ -10563,6 +10564,12 @@ nav.navbar ul.navbar-nav > li > a {
   font-size: 0.6em;
   padding: 1.5em 0.8em;
 }
+#questionnaire-container > #questionnaire-form #question-section > .question > .question-inputs > .closed-option > i.fa-minus {
+  color: #6d6d6d;
+  font-size: 0.7em;
+  padding: 0.2em;
+  cursor: pointer;
+}
 #questionnaire-container > #questionnaire-form #question-section > .question > .add-option {
   color: #6d6d6d;
   border: 1.5px solid #6d6d6d;
@@ -10572,12 +10579,34 @@ nav.navbar ul.navbar-nav > li > a {
   padding: 10px 25px;
   font-weight: 600;
   font-size: 0.65rem;
+  float: left;
+  margin-right: 30px;
 }
 #questionnaire-container > #questionnaire-form #question-section > .question > .add-option > i {
   margin: 0px 10px 0 -2.5px;
 }
 #questionnaire-container > #questionnaire-form #question-section > .question:last-child {
   border: none;
+}
+#questionnaire-container > #questionnaire-form #question-section > .question > .remove-question {
+  color: #6d6d6d;
+  border: 1.5px solid #6d6d6d;
+  border-radius: 35px;
+  outline: none;
+  background: none;
+  padding: 10px 0px;
+  font-weight: 600;
+  font-size: 0.8em;
+  border: none;
+  margin-right: 15px;
+  opacity: 0;
+  transition-duration: 0.5s;
+}
+#questionnaire-container > #questionnaire-form #question-section > .question > .remove-question > i {
+  margin-right: 10px;
+}
+#questionnaire-container > #questionnaire-form #question-section > .question:hover > .remove-question {
+  opacity: 1;
 }
 
 .navbar-laravel {

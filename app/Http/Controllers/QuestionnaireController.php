@@ -8,6 +8,17 @@ use Auth;
 
 class QuestionnaireController extends Controller
 {
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -37,6 +48,8 @@ class QuestionnaireController extends Controller
      */
     public function store(Request $request)
     {
+
+        // dd($request);
 
         $is_public = isset($request['is_public']) ? 1 : 0;
 

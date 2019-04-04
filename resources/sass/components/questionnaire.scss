@@ -156,7 +156,8 @@
 
 
         & > .question-inputs {
-          padding: 10px 0;
+          padding: 10px 0 10px 10px;
+          margin-bottom: 15px;
 
           & > .open-input {
             padding: 7.5px 15px;
@@ -186,6 +187,13 @@
                 padding: 1.5em 0.8em;
               }
             }
+
+            & > i.fa-minus {
+              color: #6d6d6d;
+              font-size: 0.7em;
+              padding: 0.2em;
+              cursor: pointer;
+            }
           }
         }
 
@@ -194,6 +202,8 @@
           padding: 10px 25px;
           font-weight: 600;
           font-size: 0.65rem;
+          float: left;
+          margin-right: 30px;
 
           & > i {
             margin: 0px 10px 0 -2.5px;
@@ -205,6 +215,31 @@
         }
 
 
+        & > .remove-question {
+          @include btn-secondary;
+          padding: 10px 0px;
+          font-weight: 600;
+          font-size: 0.8em;
+          border: none;
+          margin-right: 15px;
+
+          opacity: 0;
+          transition-duration: 0.5s;
+
+          & > i {
+            margin-right: 10px;
+          }
+        }
+
+
+      }
+
+      & > .question:hover {
+
+        & > .remove-question {
+          opacity: 1;
+          // transition-duration: 0.75s;
+        }
       }
     }
   }

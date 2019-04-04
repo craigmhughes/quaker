@@ -29,8 +29,11 @@ var get_question_div = ()=>{
     </div>
     <input type="hidden" class="q-type" name="questions[${question_count}][type]" value="open"/>
     <div class="question-inputs"></div>
-    <i class="fas fa-minus-circle remove-question"></i>
+    <button class="remove-question" type="button"><i class="fas fa-trash"></i> Remove Question</button>
+
   </div>`};
+
+  // <i class="fas fa-minus-circle remove-question"></i>
 
 var get_closed_element = (input_count, el)=>{
   return `
@@ -43,7 +46,7 @@ var get_closed_element = (input_count, el)=>{
       </div>
     </div>
     <input class="closed-value title" autocomplete="off" name="questions[${typeof el === 'undefined' ? get_question_count()-1 : el}][options][${input_count}]" placeholder="Option">
-    <i class="fas fa-minus-circle remove-option"></i>
+    <i class="fas fa-minus remove-option"></i>
   </div>
 `};
 

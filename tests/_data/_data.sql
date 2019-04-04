@@ -29,7 +29,7 @@ CREATE TABLE `migrations` (
   `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=75 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=81 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -38,7 +38,7 @@ CREATE TABLE `migrations` (
 
 LOCK TABLES `migrations` WRITE;
 /*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
-INSERT INTO `migrations` VALUES (69,'2014_10_12_000000_create_users_table',1),(70,'2014_10_12_100000_create_password_resets_table',1),(71,'2019_03_19_055908_create_questionnaires_table',1),(72,'2019_03_19_055917_create_questions_table',1),(73,'2019_03_19_055932_create_responses_table',1),(74,'2019_03_21_123537_options',1);
+INSERT INTO `migrations` VALUES (75,'2014_10_12_000000_create_users_table',1),(76,'2014_10_12_100000_create_password_resets_table',1),(77,'2019_03_19_055908_create_questionnaires_table',1),(78,'2019_03_19_055917_create_questions_table',1),(79,'2019_03_19_055932_create_responses_table',1),(80,'2019_03_21_123537_options',1);
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -53,7 +53,7 @@ CREATE TABLE `options` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `question_id` int(10) unsigned NOT NULL,
   `option` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `order_no` int(11) NOT NULL,
+  `order_no` int(11) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -68,7 +68,7 @@ CREATE TABLE `options` (
 
 LOCK TABLES `options` WRITE;
 /*!40000 ALTER TABLE `options` DISABLE KEYS */;
-INSERT INTO `options` VALUES (1,1,'sapiente',0,'2019-03-22 15:26:04','2019-03-22 15:26:04'),(2,3,'ipsum',0,'2019-03-22 15:26:04','2019-03-22 15:26:04'),(3,2,'accusantium',0,'2019-03-22 15:26:04','2019-03-22 15:26:04'),(4,1,'eaque',0,'2019-03-22 15:26:04','2019-03-22 15:26:04'),(5,2,'enim',0,'2019-03-22 15:26:04','2019-03-22 15:26:04'),(6,1,'eum',0,'2019-03-22 15:26:04','2019-03-22 15:26:04'),(7,3,'necessitatibus',0,'2019-03-22 15:26:04','2019-03-22 15:26:04'),(8,1,'molestias',0,'2019-03-22 15:26:04','2019-03-22 15:26:04'),(9,3,'ut',0,'2019-03-22 15:26:04','2019-03-22 15:26:04'),(10,2,'voluptatibus',0,'2019-03-22 15:26:04','2019-03-22 15:26:04');
+INSERT INTO `options` VALUES (1,1,'accusamus',0,'2019-04-04 12:55:46','2019-04-04 12:55:46'),(2,1,'rem',0,'2019-04-04 12:55:46','2019-04-04 12:55:46'),(3,10,'laudantium',0,'2019-04-04 12:55:46','2019-04-04 12:55:46'),(4,2,'a',0,'2019-04-04 12:55:46','2019-04-04 12:55:46'),(5,10,'rem',0,'2019-04-04 12:55:46','2019-04-04 12:55:46'),(6,2,'perspiciatis',0,'2019-04-04 12:55:46','2019-04-04 12:55:46'),(7,2,'ratione',0,'2019-04-04 12:55:46','2019-04-04 12:55:46'),(8,10,'aut',0,'2019-04-04 12:55:46','2019-04-04 12:55:46'),(9,2,'sint',0,'2019-04-04 12:55:46','2019-04-04 12:55:46'),(10,5,'quaerat',0,'2019-04-04 12:55:46','2019-04-04 12:55:46');
 /*!40000 ALTER TABLE `options` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -106,6 +106,7 @@ DROP TABLE IF EXISTS `questionnaires`;
 CREATE TABLE `questionnaires` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `user_id` bigint(20) unsigned NOT NULL,
   `is_public` tinyint(1) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -122,7 +123,7 @@ CREATE TABLE `questionnaires` (
 
 LOCK TABLES `questionnaires` WRITE;
 /*!40000 ALTER TABLE `questionnaires` DISABLE KEYS */;
-INSERT INTO `questionnaires` VALUES (1,'Consequatur ipsa ducimus eveniet et.',1,0,'2019-03-22 15:26:04','2019-03-22 15:26:04'),(2,'Dolorem qui modi soluta.',1,0,'2019-03-22 15:26:04','2019-03-22 15:26:04'),(3,'Dolores minima sed officiis asperiores nemo itaque debitis aliquid.',1,1,'2019-03-22 15:26:04','2019-03-22 15:26:04'),(4,'Ea eos possimus vitae exercitationem voluptatum nam.',1,1,'2019-03-22 15:26:04','2019-03-22 15:26:04'),(5,'Atque minus fugiat debitis.',1,1,'2019-03-22 15:26:04','2019-03-22 15:26:04');
+INSERT INTO `questionnaires` VALUES (1,'Repellat magni earum consequatur voluptatem totam deserunt repudiandae nam.','Cumque architecto id odit est.',1,0,'2019-04-04 12:55:46','2019-04-04 12:55:46'),(2,'Et ea dolore quo iste.','Sed fuga assumenda labore.',1,0,'2019-04-04 12:55:46','2019-04-04 12:55:46'),(3,'Repudiandae quis rerum aliquid esse exercitationem vel sit.','Voluptas quas ex possimus assumenda temporibus voluptatem qui dicta.',1,1,'2019-04-04 12:55:46','2019-04-04 12:55:46'),(4,'Neque error nisi cupiditate.','Voluptates repellat rerum at quia.',1,1,'2019-04-04 12:55:46','2019-04-04 12:55:46'),(5,'Ea dolorem sunt maiores odio.','Numquam temporibus architecto labore fuga qui.',1,0,'2019-04-04 12:55:46','2019-04-04 12:55:46');
 /*!40000 ALTER TABLE `questionnaires` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -152,7 +153,7 @@ CREATE TABLE `questions` (
 
 LOCK TABLES `questions` WRITE;
 /*!40000 ALTER TABLE `questions` DISABLE KEYS */;
-INSERT INTO `questions` VALUES (1,'In labore ut voluptates quia in rerum.',3,'closed','2019-03-22 15:26:04','2019-03-22 15:26:04'),(2,'Ut commodi eius velit asperiores.',3,'closed','2019-03-22 15:26:04','2019-03-22 15:26:04'),(3,'Aperiam quia molestiae magnam.',4,'closed','2019-03-22 15:26:04','2019-03-22 15:26:04'),(4,'Vel blanditiis accusantium rerum eos vel possimus quas temporibus.',3,'open','2019-03-22 15:26:04','2019-03-22 15:26:04'),(5,'Et veniam rem velit adipisci exercitationem qui magnam.',2,'open','2019-03-22 15:26:04','2019-03-22 15:26:04'),(6,'Fugiat est nam ut sunt.',3,'open','2019-03-22 15:26:04','2019-03-22 15:26:04'),(7,'Vel doloremque laborum nihil laboriosam non aut.',5,'closed','2019-03-22 15:26:04','2019-03-22 15:26:04'),(8,'Non incidunt nulla laudantium quas libero repellat est.',2,'open','2019-03-22 15:26:04','2019-03-22 15:26:04'),(9,'Magni sed sint omnis quia et voluptates.',2,'open','2019-03-22 15:26:04','2019-03-22 15:26:04'),(10,'Officiis rerum voluptatibus nemo dolore deserunt consequatur voluptatem.',5,'open','2019-03-22 15:26:04','2019-03-22 15:26:04');
+INSERT INTO `questions` VALUES (1,'Voluptates voluptatem rem excepturi commodi.',2,'closed','2019-04-04 12:55:46','2019-04-04 12:55:46'),(2,'Voluptatem quasi provident quo.',5,'closed','2019-04-04 12:55:46','2019-04-04 12:55:46'),(3,'Nihil temporibus neque et.',2,'open','2019-04-04 12:55:46','2019-04-04 12:55:46'),(4,'Laudantium et dolorum necessitatibus laudantium.',1,'open','2019-04-04 12:55:46','2019-04-04 12:55:46'),(5,'Omnis sed non excepturi hic quod eum.',1,'closed','2019-04-04 12:55:46','2019-04-04 12:55:46'),(6,'Voluptas at sint aut voluptatem natus laboriosam nisi.',3,'open','2019-04-04 12:55:46','2019-04-04 12:55:46'),(7,'Molestias commodi asperiores rerum est fuga minus sequi.',4,'open','2019-04-04 12:55:46','2019-04-04 12:55:46'),(8,'Doloribus quo quibusdam magni voluptatem praesentium et.',1,'open','2019-04-04 12:55:46','2019-04-04 12:55:46'),(9,'Cum aut et non praesentium illo impedit id dolores.',1,'open','2019-04-04 12:55:46','2019-04-04 12:55:46'),(10,'Ut quas commodi facere dolorem aspernatur pariatur.',5,'closed','2019-04-04 12:55:46','2019-04-04 12:55:46');
 /*!40000 ALTER TABLE `questions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -182,7 +183,7 @@ CREATE TABLE `responses` (
 
 LOCK TABLES `responses` WRITE;
 /*!40000 ALTER TABLE `responses` DISABLE KEYS */;
-INSERT INTO `responses` VALUES (1,3,'closed','ipsum','2019-03-22 15:26:04','2019-03-22 15:26:04'),(2,3,'closed','ipsum','2019-03-22 15:26:04','2019-03-22 15:26:04'),(3,10,'open','Iste velit delectus optio autem aut iure.','2019-03-22 15:26:04','2019-03-22 15:26:04'),(4,4,'open','Doloribus dolor aut vitae omnis quia repudiandae.','2019-03-22 15:26:04','2019-03-22 15:26:04'),(5,3,'closed','ipsum','2019-03-22 15:26:04','2019-03-22 15:26:04'),(6,3,'closed','ipsum','2019-03-22 15:26:04','2019-03-22 15:26:04'),(7,1,'closed','sapiente','2019-03-22 15:26:04','2019-03-22 15:26:04'),(8,3,'closed','ipsum','2019-03-22 15:26:04','2019-03-22 15:26:04'),(9,10,'open','Non dignissimos maxime animi.','2019-03-22 15:26:04','2019-03-22 15:26:04'),(10,6,'open','Aut minus dolore dolor autem accusamus eligendi.','2019-03-22 15:26:04','2019-03-22 15:26:04'),(11,4,'open','Aliquid non ut numquam placeat atque consectetur eligendi.','2019-03-22 15:26:04','2019-03-22 15:26:04'),(12,10,'open','Quam dignissimos et consequuntur rerum.','2019-03-22 15:26:04','2019-03-22 15:26:04'),(13,3,'closed','ipsum','2019-03-22 15:26:04','2019-03-22 15:26:04'),(14,3,'closed','ipsum','2019-03-22 15:26:04','2019-03-22 15:26:04'),(15,3,'closed','ipsum','2019-03-22 15:26:04','2019-03-22 15:26:04'),(16,3,'closed','ipsum','2019-03-22 15:26:04','2019-03-22 15:26:04'),(17,1,'closed','sapiente','2019-03-22 15:26:04','2019-03-22 15:26:04'),(18,10,'open','Occaecati aspernatur saepe voluptatem voluptatum eveniet numquam nam inventore.','2019-03-22 15:26:04','2019-03-22 15:26:04'),(19,10,'open','Dolores ut aut voluptatem dolores iure.','2019-03-22 15:26:04','2019-03-22 15:26:04'),(20,3,'closed','ipsum','2019-03-22 15:26:04','2019-03-22 15:26:04');
+INSERT INTO `responses` VALUES (1,6,'open','Est hic magnam officia quidem possimus veniam vero.','2019-04-04 12:55:46','2019-04-04 12:55:46'),(2,6,'open','Pariatur nesciunt perferendis deserunt dignissimos culpa consequatur earum.','2019-04-04 12:55:46','2019-04-04 12:55:46'),(3,6,'open','Facere deleniti quos enim sint voluptas.','2019-04-04 12:55:47','2019-04-04 12:55:47'),(4,7,'open','Necessitatibus laudantium autem architecto commodi rerum.','2019-04-04 12:55:47','2019-04-04 12:55:47'),(5,7,'open','Laboriosam ullam id dolores voluptas ea.','2019-04-04 12:55:47','2019-04-04 12:55:47'),(6,7,'open','Numquam inventore pariatur laboriosam et sit omnis animi.','2019-04-04 12:55:47','2019-04-04 12:55:47'),(7,7,'open','Non vel asperiores assumenda praesentium mollitia ad.','2019-04-04 12:55:47','2019-04-04 12:55:47'),(8,6,'open','Dicta sit quo reprehenderit voluptas.','2019-04-04 12:55:47','2019-04-04 12:55:47'),(9,7,'open','Ipsum maiores officia animi eum.','2019-04-04 12:55:47','2019-04-04 12:55:47'),(10,6,'open','Et accusamus dignissimos tenetur exercitationem repellendus error.','2019-04-04 12:55:47','2019-04-04 12:55:47'),(11,7,'open','Autem nihil impedit unde et eius dolorum sed.','2019-04-04 12:55:47','2019-04-04 12:55:47'),(12,6,'open','Quis ea sunt sit pariatur enim neque.','2019-04-04 12:55:47','2019-04-04 12:55:47'),(13,6,'open','Autem aliquid molestiae ut voluptatem esse consequatur.','2019-04-04 12:55:47','2019-04-04 12:55:47'),(14,7,'open','Ab quam autem deserunt debitis sit dolores nemo voluptatum.','2019-04-04 12:55:47','2019-04-04 12:55:47'),(15,6,'open','Quod ea alias corrupti libero facilis impedit.','2019-04-04 12:55:47','2019-04-04 12:55:47'),(16,7,'open','Aliquid natus quam tempora ut fuga accusantium.','2019-04-04 12:55:47','2019-04-04 12:55:47'),(17,7,'open','Natus nostrum inventore omnis et impedit exercitationem.','2019-04-04 12:55:47','2019-04-04 12:55:47'),(18,7,'open','Veniam modi dolore doloremque enim sit voluptatem dolores.','2019-04-04 12:55:47','2019-04-04 12:55:47'),(19,6,'open','Enim qui enim odit neque dignissimos fugit.','2019-04-04 12:55:47','2019-04-04 12:55:47'),(20,7,'open','Aut et ad veniam rerum aut.','2019-04-04 12:55:47','2019-04-04 12:55:47');
 /*!40000 ALTER TABLE `responses` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -213,7 +214,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'Craig Hughes','23641835@edgehill.ac.uk',NULL,'$2y$10$kqWEWgYc./0VT.D.NycpDuldwM1G7oUc7Ydw9LKotXIliKFv9Vhvm',NULL,'2019-03-22 15:29:59','2019-03-22 15:29:59');
+INSERT INTO `users` VALUES (1,'Craig Hughes','test@mail.com',NULL,'$2y$10$aWa6/adDBpq8e0gONO2Qp.558mN./Xb/S.GMyyu/NwoCxSdvvj3Iu',NULL,'2019-04-04 12:56:05','2019-04-04 12:56:05');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -226,4 +227,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-03-22 15:31:33
+-- Dump completed on 2019-04-04 14:56:35
