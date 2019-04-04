@@ -7,8 +7,12 @@
 @section('content')
   <div id="questionnaire-container">
 
-    {!! Form::open(array('action' => isset($edit) ? ["QuestionnaireController@update", $edit->id] : "QuestionnaireController@store", 'id' => 'questionnaire-form')) !!}
-            {{ csrf_field() }}
+    {!! Form::open(array('action' => isset($edit) ?
+      ["QuestionnaireController@update", $edit->id] : "QuestionnaireController@store", 'id' => 'questionnaire-form')) !!}
+        {{ csrf_field() }}
+        @isset($edit)
+          <input type="hidden" name="_method" value="put" />
+        @endisset
         <div class="row row-head d-flex">
           <h3 class="title">New Questionnaire</h3>
           <div class="ml-auto right">
