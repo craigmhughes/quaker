@@ -55,7 +55,7 @@ var get_closed_element = (input_count, el)=>{
   *
   *   @param edit_el = Element that needs to be edited. Needs to be passed to build_inputs.
   */
-function get_selects(edit_el){
+function get_selects(edit_el, click){
   // Get Question Select Elements
   question_selects = document.getElementsByClassName('q-select');
   select_vals = select_vals !== undefined ? question_selects.length < select_vals.length ? [] : select_vals : [] ;
@@ -71,7 +71,9 @@ function get_selects(edit_el){
     select_vals[edit_el] = question_selects[edit_el].value;
   }
 
-  build_inputs(edit_el);
+  if(click || window.location.href.includes('create')){
+    build_inputs(edit_el);
+  }
 }
 
 /**
@@ -117,7 +119,7 @@ function create_question(){
 
 
 function remove_question(el){
-  let el_question = el.parentNode;
+  let el_question;
   let parent_index = 0;
 
   let questions = document.getElementsByClassName('question');
@@ -242,7 +244,7 @@ document.getElementById('question-section').addEventListener('click', function(e
         // Change Question Type
         parent.querySelector('input.q-type').value = question_type;
 
-        get_selects(i);
+        get_selects(i, true);
 
         // Add or remove 'add option' based on question type
         if(question_type === "closed" && parent.getElementsByClassName('add-option').length === 0){
@@ -265,7 +267,6 @@ document.getElementById('question-section').addEventListener('click', function(e
 
   } else if (e.target.className.includes("remove-question")) {
     remove_question(e.target);
-
   }
 
 
@@ -288,5 +289,10 @@ document.getElementById('add-q').addEventListener('click', ()=>{
 
 
 
-// Run Here
-create_question();
+// Prevent creating new question if in edit mode.
+if(document.getElementById('questionnaire-title').value == null){
+  create_question();
+} else {
+  update_question_count();
+  get_selects();
+}

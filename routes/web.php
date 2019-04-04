@@ -22,5 +22,9 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/home', 'HomeController@index')->name('home');
 
     // Questionnaires
-    Route::resource('/questionnaires', 'QuestionnaireController');
+    Route::get('questionnaires/edit/{id}', [
+      'as' => 'questionnaires.edit',
+      'uses' => 'QuestionnaireController@edit'
+    ]);
+    Route::resource('/questionnaires', 'QuestionnaireController', ['except' => 'edit']);
 });

@@ -115,7 +115,26 @@ class QuestionnaireController extends Controller
      */
     public function edit($id)
     {
-        //
+      $edit = Questionnaire::find($id);
+
+      /* Disable other users from editing questionnaires
+      not belonging to them */
+      if($edit->user_id !== Auth::id()){
+        return redirect('/home');
+      }
+
+      // $data['questions'] = $data['questionnaire']->questions;
+      // $data['options'] = [];
+      //
+      // for($i = 0; $i < sizeof($data['questions']); $i++){
+      //   if($data['questions'][$i]->type == "closed"){
+      //     $data['options'][$i] = $data['questions'][$i]->options;
+      //   }
+      // }
+
+      // dd($data);
+
+      return view('questionnaire.edit-form', ['edit' => $edit]);
     }
 
     /**
