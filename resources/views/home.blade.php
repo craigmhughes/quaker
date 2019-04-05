@@ -20,7 +20,7 @@
         <tbody>
           @foreach ($questionnaires as $key => $value)
             <tr>
-              <th scope="row"><a href="/questionnaires/edit/{{$value->id}}">{{$value->title}}</a></th>
+              <th scope="row" onclick="location.href='{{"/questionnaires/edit/" . $value->id}}'">{{$value->title}}</th>
               <td>{{date('jS F Y', strtotime($value->created_at))}}</td>
               <td><i class="fas fa-circle {{$value->is_public ? 'public' : 'private'}}"></i>{{$value->is_public ? 'Public' : 'Private'}}</td>
               <td>

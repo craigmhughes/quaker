@@ -10387,6 +10387,9 @@ nav.navbar ul.navbar-nav > li > a {
   border-radius: 0 100px 100px 0;
   padding-right: 30px;
 }
+#page-content > .table > tbody > tr > th {
+  cursor: pointer;
+}
 #page-content > .table > tbody > tr:first-child td, #page-content > .table > tbody > tr:first-child th {
   border-top: none;
 }
@@ -10407,6 +10410,11 @@ nav.navbar ul.navbar-nav > li > a {
 }
 #page-content > .table > tbody td > i.fa-circle.public {
   color: #34bf49;
+}
+
+textarea {
+  box-sizing: border-box;
+  resize: none;
 }
 
 #add-q {
@@ -10475,16 +10483,25 @@ nav.navbar ul.navbar-nav > li > a {
 }
 #questionnaire-container > #questionnaire-form > .title {
   font-size: 3em;
+  resize: none;
+  height: auto;
+  max-width: 100%;
+  max-height: 12.5em;
+  line-height: 100%;
+  overflow: hidden;
 }
 #questionnaire-container > #questionnaire-form > .desc {
   letter-spacing: -0.05rem;
   outline: none;
   border: none;
   font-size: 1.25em;
-  height: 50px;
+  height: auto;
   resize: none;
   font-weight: 300;
   margin-bottom: 10px;
+  max-height: 6em;
+  min-width: 100%;
+  overflow: hidden;
 }
 #questionnaire-container > #questionnaire-form #question-section > .question {
   padding: 30px 0px;
@@ -10516,6 +10533,7 @@ nav.navbar ul.navbar-nav > li > a {
   border-radius: 35px;
   outline: none;
   background: none;
+  max-height: 45px;
 }
 #questionnaire-container > #questionnaire-form #question-section > .question > .row > .question-select > i {
   font-size: 0.8em;
@@ -10543,7 +10561,7 @@ nav.navbar ul.navbar-nav > li > a {
   color: #6d6d6d;
 }
 #questionnaire-container > #questionnaire-form #question-section > .question > .question-inputs {
-  padding: 10px 0 10px 10px;
+  padding: 10px 0;
   margin-bottom: 15px;
 }
 #questionnaire-container > #questionnaire-form #question-section > .question > .question-inputs > .open-input {
@@ -10555,6 +10573,7 @@ nav.navbar ul.navbar-nav > li > a {
 }
 #questionnaire-container > #questionnaire-form #question-section > .question > .question-inputs > .closed-option {
   min-width: 50px;
+  padding-left: 10px;
 }
 #questionnaire-container > #questionnaire-form #question-section > .question > .question-inputs > .closed-option > input.closed-value {
   font-weight: 500;

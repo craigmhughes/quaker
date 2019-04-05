@@ -28,17 +28,22 @@
           {{-- <button  class="btn btn-primary ml-auto"><a href="{{ route('questionnaire/') }}">Save</a></button> --}}
         </div>
 
-        {!! Form::text('title',  isset($edit) ? $edit->title : null, [
+        {!! Form::textarea('title',  isset($edit) ? $edit->title : null, [
           'class' => 'large-8 columns title',
           'id' => 'questionnaire-title',
           'placeholder' => 'Questionnaire Title',
           'autocomplete' => 'off',
+          'maxlength' => '100',
+          'data-autoresize' => '',
+          'rows' => '1',
           ]) !!}
 
         {!! Form::textarea('description', isset($edit) ? $edit->description : null, [
           'class' => 'large-8 columns desc',
           'placeholder' => 'Enter Description Here',
-          'maxlength' => '100'
+          'maxlength' => '150',
+          'data-autoresize' => '',
+          'rows' => '1',
           ]) !!}
 
         <div id="question-section">
@@ -51,7 +56,7 @@
                 <div class="question">
                   <div class="row">
 
-                    <input type="text" value="' . $question->title . '" class="title" name="questions[' . $i . '][title]" autocomplete="off" placeholder="Untitled Open Question"/>
+                    <textarea type="text" data-autoresize rows="1"  class="title" name="questions[' . $i . '][title]" autocomplete="off" placeholder="Untitled Open Question">' . $question->title . '</textarea>
 
                     <div class="question-select ml-auto">
                       <select class="q-select">';

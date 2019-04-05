@@ -24,7 +24,7 @@ var get_question_div = ()=>{
   return `
   <div class="question">
     <div class="row">
-      <input type="text" class="title" name="questions[${question_count}][title]" autocomplete="off" placeholder="Untitled Open Question"/>
+      <textarea maxlength="80" data-autoresize rows="1" class="title" name="questions[${question_count}][title]" autocomplete="off" placeholder="Untitled Open Question"></textarea>
       ${select_div}
     </div>
     <input type="hidden" class="q-type" name="questions[${question_count}][type]" value="open"/>
@@ -71,7 +71,7 @@ function get_selects(edit_el, click){
     select_vals[edit_el] = question_selects[edit_el].value;
   }
 
-  if(click || window.location.href.includes('create')){
+  if(click || window.location.href.indexOf('create') > 0){
     build_inputs(edit_el);
   }
 }
@@ -113,7 +113,7 @@ function create_question(){
 
   q_sec.insertAdjacentHTML('beforeend', get_question_div());
 
-  get_selects();
+  get_selects(undefined, true);
   update_question_count();
 }
 
@@ -121,6 +121,8 @@ function create_question(){
 function remove_question(el){
   let el_question;
   let parent_index = 0;
+
+  el_question = el.parentNode;
 
   let questions = document.getElementsByClassName('question');
 
@@ -288,11 +290,20 @@ document.getElementById('add-q').addEventListener('click', ()=>{
 });
 
 
-
 // Prevent creating new question if in edit mode.
-if(document.getElementById('questionnaire-title').value == null){
+if(window.location.href.indexOf('create') > 0){
   create_question();
 } else {
-  update_question_count();
+
   get_selects();
+  update_question_count();
 }
+
+jQuery.each(jQuery('textarea[data-autoresize]'), function() {
+    var offset = this.offsetHeight - this.clientHeight + 1.5;
+
+    var resizeTextarea = function(el) {
+        jQuery(el).css('height', 'auto').css('height', (el.scrollHeight + offset) - 2);
+    };
+    jQuery(this).on('keyup input', function() { resizeTextarea(this); }).removeAttr('data-autoresize');
+});

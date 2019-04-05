@@ -41,6 +41,10 @@
 
     & > tbody {
 
+      & > tr > th {
+        cursor: pointer;
+      }
+
       & > tr:first-child {
         & td, & th {
         border-top: none;
