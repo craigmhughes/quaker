@@ -242,7 +242,7 @@ document.getElementById('question-section').addEventListener('click', function(e
         let question_type = select_vals[i] === "open" ? "closed" : "open";
 
         // Change Title
-        parent.querySelector('input.title').placeholder = `Untitled ${question_type} Question`;
+        parent.querySelector('textarea.title').placeholder = `Untitled ${question_type} Question`;
         // Change Question Type
         parent.querySelector('input.q-type').value = question_type;
 
@@ -294,7 +294,7 @@ document.getElementById('add-q').addEventListener('click', ()=>{
 if(window.location.href.indexOf('create') > 0){
   create_question();
 } else {
-
+  console.log('here');
   get_selects();
   update_question_count();
 }
@@ -305,5 +305,10 @@ jQuery.each(jQuery('textarea[data-autoresize]'), function() {
     var resizeTextarea = function(el) {
         jQuery(el).css('height', 'auto').css('height', (el.scrollHeight + offset) - 2);
     };
+
+    resizeTextarea(this);
+
+    $(window).on('resize', ()=>{ resizeTextarea(this); });
+
     jQuery(this).on('keyup input', function() { resizeTextarea(this); }).removeAttr('data-autoresize');
 });

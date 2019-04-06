@@ -10519,6 +10519,7 @@ textarea {
   font-size: 1.8em;
   transition-duration: 0.75s;
   border-bottom: 2px solid rgba(255, 255, 255, 0);
+  width: 70%;
 }
 #questionnaire-container > #questionnaire-form #question-section > .question > .row > .title::placeholder {
   color: #222;

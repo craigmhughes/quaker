@@ -84,7 +84,7 @@
                   <div class="question-inputs">';
 
                   if($question->type == "open"){
-                    echo '<input class="open-input noselect" type="text" placeholder="Enter Answer Here..."/>';
+                    echo '<input class="open-input noselect" type="text" placeholder="Enter Answer Here..."/></div>';
                   } else {
                     for($j = 0; $j < count($question->options); $j++){
                     $option = $question->options[$j];
@@ -102,11 +102,12 @@
                      </div>
                      ';
                     }
+
+                    echo '</div>
+                    <button class="add-option" type="button"><i class="fas fa-plus"></i> Add Option</button>';
                   }
 
-
-
-                  echo '</div>
+                  echo '
                   <button class="remove-question" type="button"><i class="fas fa-trash"></i> Remove Question</button>
                 </div>';
               }
