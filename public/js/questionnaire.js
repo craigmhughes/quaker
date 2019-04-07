@@ -45,7 +45,7 @@ var get_closed_element = (input_count, el)=>{
           <label></label>
       </div>
     </div>
-    <input class="closed-value title" autocomplete="off" name="questions[${typeof el === 'undefined' ? get_question_count()-1 : el}][options][${input_count}]" placeholder="Option">
+    <input class="closed-value title" autocomplete="off" name="questions[${typeof el === 'undefined' ? get_question_count()-1 : el}][options][${input_count}][title]" placeholder="Option">
     <i class="fas fa-minus remove-option"></i>
   </div>
 `};
@@ -144,6 +144,7 @@ function remove_question(el){
         // Re-reads index. Assigns new index to inputs.
         questions[i].getElementsByClassName('title')[0].setAttribute('name', `questions[${i}][title]`);
         questions[i].getElementsByClassName('q-type')[0].setAttribute('name', `questions[${i}][type]`);
+          questions[i].getElementsByClassName('q-id')[0].setAttribute('name', `questions[${i}][id]`);
 
         let closed_ops = questions[i].getElementsByClassName('closed-value');
 
@@ -187,7 +188,7 @@ function create_option(el){
   }
 
   if(!found_null){
-    q_inputs.innerHTML = q_inputs.innerHTML + get_closed_element(input_count);
+    q_inputs.innerHTML = q_inputs.innerHTML + get_closed_element(input_count, q_index);
   }
 
   // Re-assign remembered values.
@@ -217,9 +218,9 @@ function remove_option(el){
     el_option.parentNode.removeChild(el_option);
 
     for (let i = 0; i < child_options.length; i++){
-      // Re-reads index if more than one option exists.
-      if(i > 0){
-        child_options[i].getElementsByClassName('title')[0].setAttribute('name', `questions[${parent_index}][options][${i}]`);
+      child_options[i].getElementsByClassName('title')[0].setAttribute('name', `questions[${parent_index}][options][${i}][title]`);
+      if (child_options[i].getElementsByClassName('option-id')[0] !== undefined){
+        child_options[i].getElementsByClassName('option-id')[0].setAttribute('name', `questions[${parent_index}][options][${i}][id]`);
       }
     }
   }

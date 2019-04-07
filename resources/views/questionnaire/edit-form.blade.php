@@ -27,6 +27,10 @@
           </div>
           {{-- <button  class="btn btn-primary ml-auto"><a href="{{ route('questionnaire/') }}">Save</a></button> --}}
         </div>
+        @isset($edit)
+          <input type="hidden" name="id" value="{{$edit->id}}"/>
+        @endisset
+
 
         {!! Form::textarea('title',  isset($edit) ? $edit->title : null, [
           'class' => 'large-8 columns title',
@@ -80,7 +84,8 @@
 
                   </div>
 
-                  <input type="hidden" class="q-type" name="questions[' . $i . '][type]" value="open"/>
+                  <input type="hidden" class="q-type" name="questions[' . $i . '][type]" value="'. $question->type .'"/>
+                  <input type="hidden" class="q-id" name="questions[' . $i . '][id]" value="'. $question->id .'"/>
                   <div class="question-inputs">';
 
                   if($question->type == "open"){
@@ -97,7 +102,8 @@
                              <label></label>
                          </div>
                        </div>
-                       <input value="'.$option->option.'" class="closed-value title"  autocomplete="off" name="questions['.$i.'][options]['.$j.']" placeholder="Option">
+                       <input value="'.$option->option.'" class="closed-value title"  autocomplete="off" name="questions['.$i.'][options]['.$j.'][title]" placeholder="Option">
+                       <input type="hidden" value="'.$option->id.'" class="closed-value option-id" name="questions['.$i.'][options]['.$j.'][id]" >
                        <i class="fas fa-minus remove-option"></i>
                      </div>
                      ';

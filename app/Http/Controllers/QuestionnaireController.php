@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Questionnaire;
+use App\Question;
+use App\Option;
 use Auth;
 
 class QuestionnaireController extends Controller
@@ -82,7 +84,7 @@ class QuestionnaireController extends Controller
 
               $new_question->options()->create([
                 'question_id' => $new_question['id'],
-                'option' => $option,
+                'option' => $option['title'],
                 'order_no' => 0,
               ]);
 
@@ -146,7 +148,169 @@ class QuestionnaireController extends Controller
      */
     public function update(Request $request, $id)
     {
-        dd($request);
+        $edit = $request->all();
+
+        // Validate required fields
+        $this->validate($request,[
+          'title' => 'required',
+          'description' => 'nullable',
+          'questions' => 'required'
+        ]);
+
+        // dd($edit);
+
+        // Edit Questionnaire
+        $questionnaire = Questionnaire::find($edit['id']);
+
+        $questionnaire->title = $edit['title'];
+        $questionnaire->description = $edit['description'];
+        $questionnaire->is_public = isset($edit['is_public']) ? 1 : 0;
+
+        $questionnaire->save();
+
+        // Edit Questions
+        $questions = $questionnaire->questions;
+        $found_questions = [];
+
+        for($i = 0; $i < count($edit['questions']); $i++){
+
+          // Create new Question if no existing id is found.
+          if(!isset($edit['questions'][$i]['id'])){
+            foreach($edit['questions'] as $question){
+
+              $new_question = $questionnaire->questions()->create([
+                'title' => $question['title'],
+                'type' => $question['type'],
+                'questionnaire_id' => $questionnaire['id'],
+              ]);
+
+              if($question['type'] == "closed"){
+                foreach($question['options'] as $option){
+
+                  $new_question->options()->create([
+                    'question_id' => $new_question['id'],
+                    'option' => $option['title'],
+                    'order_no' => 0,
+                  ]);
+
+
+                }
+              }
+            }
+
+
+          } else {
+
+            $question = Question::find($edit['questions'][$i]['id']);
+
+            if($question == null){
+              // TODO: add error message to home
+              return redirect('/home');
+            }
+
+            if($question['type'] == "closed" && isset($edit['questions'][$i]['options'])){
+
+              // Overwrite options first. Then overwrite question data.
+              $options = $edit['questions'][$i]['options'];
+
+              /*  Loop for checking if there are missing
+                  options in edit form. delete if so.
+              */
+              for ($j=0; $j < count($question->options); $j++) {
+                $found = false;
+
+                for ($k=0; $k < count($options); $k++) {
+
+                  if(isset($options[$k]['id'])){
+                    if($question->options[$j]['id'] == $options[$k]['id']){
+                      $found = true;
+                      break;
+                    }
+                  }
+
+                }
+
+                if(!$found){
+                  Option::find($question->options[$j]['id'])->delete();
+                }
+              }
+
+              /* Loop for checking edit options and
+                editing/creating based on result
+              */
+              for ($j=0; $j < count($options); $j++) {
+
+
+
+                // If existing option.
+                if(isset($options[$j]['id'])){
+
+                  $option = Option::find($options[$j]['id']);
+
+                  if($option !== null){
+                    // overwrite.
+                    $option->option = $options[$j]['title'];
+                    $option->save();
+                  }
+
+                } else {
+                  // dd($edit['questions'][$i]['id']);
+                  // else, create new option.
+                  $new_option = $question->options()->create([
+                    'question_id' => $edit['questions'][$i]['id'],
+                    'option' => $options[$j]['title'],
+                    'order_no' => 0,
+                  ]);
+
+                  // dd($new_option);
+
+                }
+              }
+
+
+            }
+
+
+            // Overwrite question data.
+            $question->title = $edit['questions'][$i]['title'];
+            $question->type = $edit['questions'][$i]['type'];
+            $question->save();
+
+          }
+
+        }
+
+        /* If all existing questions are found, counts will be the same.
+           If any are missing, count will be lower.
+           If so, delete missing questions.
+         */
+        // if(count($found_questions) < count($questions)){
+        //
+        //   for($i = 0; $i < count($questions); $i++){
+        //     $is_missing = true;
+        //
+        //     // Check question against found_questions
+        //     for($j = 0; $j < count($found_questions); $j++){
+        //       // If found
+        //       if($found_questions[$j] == $questions[$i]){
+        //         $is_missing = false;
+        //         break;
+        //       }
+        //     }
+        //
+        //     if($is_missing){
+        //       $questions[$i]->options->delete();
+        //       $questions[$i]->delete();
+        //     }
+        //   }
+        //
+        // } else {
+        //   dd("all there!");
+        // }
+
+        return redirect('/home');
+
+
     }
 
     /**
