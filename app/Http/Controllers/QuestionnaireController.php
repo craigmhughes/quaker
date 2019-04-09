@@ -121,7 +121,7 @@ class QuestionnaireController extends Controller
 
       /* Disable other users from editing questionnaires
       not belonging to them */
-      if($edit->user_id !== Auth::id()){
+      if($edit['user_id'] !== Auth::id()){
         return redirect('/home');
       }
 
@@ -150,6 +150,8 @@ class QuestionnaireController extends Controller
     {
         $edit = $request->all();
 
+        // dd($request);
+
         // Validate required fields
         $this->validate($request,[
           'title' => 'required',
@@ -176,27 +178,26 @@ class QuestionnaireController extends Controller
 
           // Create new Question if no existing id is found.
           if(!isset($edit['questions'][$i]['id'])){
-            foreach($edit['questions'] as $question){
-
-              $new_question = $questionnaire->questions()->create([
-                'title' => $question['title'],
-                'type' => $question['type'],
-                'questionnaire_id' => $questionnaire['id'],
-              ]);
-
-              if($question['type'] == "closed"){
-                foreach($question['options'] as $option){
-
-                  $new_question->options()->create([
-                    'question_id' => $new_question['id'],
-                    'option' => $option['title'],
-                    'order_no' => 0,
-                  ]);
 
 
-                }
+            $new_question = $questionnaire->questions()->create([
+              'title' => $edit['questions'][$i]['title'],
+              'type' => $edit['questions'][$i]['type'],
+              'questionnaire_id' => $questionnaire['id'],
+            ]);
+
+            if($edit['questions'][$i]['type'] == "closed"){
+              foreach($edit['questions'][$i]['options'] as $option){
+
+                $new_question->options()->create([
+                  'question_id' => $new_question['id'],
+                  'option' => $option['title'],
+                  'order_no' => 0,
+                ]);
               }
+
             }
+
 
 
           } else {
@@ -268,6 +269,41 @@ class QuestionnaireController extends Controller
               }
 
 
+            } else if($edit['questions'][$i]['type'] == "closed"){
+
+                foreach($edit['questions'][$i]['options'] as $option){
+                  $question->options()->create([
+                    'question_id' => $question['id'],
+                    'option' => $option['title'],
+                    'order_no' => 0,
+                  ]);
+                }
+            } else if ($edit['questions'][$i]['type'] == "open" && $question["type"] == "closed"){
+              $question->options()->delete();
+            }
+
+
+            /*  Loop for checking if there are missing
+                quesitons in edit form. delete if so.
+            */
+            for ($j=0; $j < count($questionnaire->questions); $j++) {
+              $found = false;
+
+              for ($k=0; $k < count($edit['questions']); $k++) {
+
+                if(isset($edit['questions'][$k]['id'])){
+                  // dd($questionnaire->questions[$j]['id']);
+                  if($questionnaire->questions[$j]['id'] == $edit['questions'][$k]['id']){
+                    $found = true;
+                    break;
+                  }
+                }
+
+              }
+
+              if(!$found){
+                Question::find($questionnaire->questions[$j]['id'])->delete();
+              }
             }
 
 

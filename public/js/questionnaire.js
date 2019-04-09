@@ -144,13 +144,13 @@ function remove_question(el){
         // Re-reads index. Assigns new index to inputs.
         questions[i].getElementsByClassName('title')[0].setAttribute('name', `questions[${i}][title]`);
         questions[i].getElementsByClassName('q-type')[0].setAttribute('name', `questions[${i}][type]`);
-          questions[i].getElementsByClassName('q-id')[0].setAttribute('name', `questions[${i}][id]`);
+        questions[i].getElementsByClassName('q-id')[0].setAttribute('name', `questions[${i}][id]`);
 
         let closed_ops = questions[i].getElementsByClassName('closed-value');
 
         if(closed_ops.length > 0){
-          for(let i = 0; i < closed_ops.length; i++){
-            closed_ops[i].setAttribute('name', closed_ops[i].getAttribute('name').replace(/questions\[\d+\]/g, `questions[${i}]`));
+          for(let j = 0; j < closed_ops.length; j++){
+            closed_ops[j].setAttribute('name', closed_ops[j].getAttribute('name').replace(/questions\[\d+\]/g, `questions[${i}]`));
 
           }
         }
