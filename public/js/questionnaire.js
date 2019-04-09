@@ -290,6 +290,11 @@ document.getElementById('add-q').addEventListener('click', ()=>{
   create_question();
 });
 
+document.getElementById('delete-questionnaire').addEventListener('click', ()=>{
+  document.getElementById('form-method').value = "delete";
+  document.getElementById('questionnaire-form').submit();
+});
+
 
 // Prevent creating new question if in edit mode.
 if(window.location.href.indexOf('create') > 0){

@@ -125,17 +125,6 @@ class QuestionnaireController extends Controller
         return redirect('/home');
       }
 
-      // $data['questions'] = $data['questionnaire']->questions;
-      // $data['options'] = [];
-      //
-      // for($i = 0; $i < sizeof($data['questions']); $i++){
-      //   if($data['questions'][$i]->type == "closed"){
-      //     $data['options'][$i] = $data['questions'][$i]->options;
-      //   }
-      // }
-
-      // dd($data);
-
       return view('questionnaire.edit-form', ['edit' => $edit]);
     }
 
@@ -316,34 +305,6 @@ class QuestionnaireController extends Controller
 
         }
 
-        /* If all existing questions are found, counts will be the same.
-           If any are missing, count will be lower.
-           If so, delete missing questions.
-         */
-        // if(count($found_questions) < count($questions)){
-        //
-        //   for($i = 0; $i < count($questions); $i++){
-        //     $is_missing = true;
-        //
-        //     // Check question against found_questions
-        //     for($j = 0; $j < count($found_questions); $j++){
-        //       // If found
-        //       if($found_questions[$j] == $questions[$i]){
-        //         $is_missing = false;
-        //         break;
-        //       }
-        //     }
-        //
-        //     if($is_missing){
-        //       $questions[$i]->options->delete();
-        //       $questions[$i]->delete();
-        //     }
-        //   }
-        //
-        // } else {
-        //   dd("all there!");
-        // }
-
         return redirect('/home');
 
 
@@ -357,6 +318,13 @@ class QuestionnaireController extends Controller
      */
     public function destroy($id)
     {
-        //
+      $questionnaire = Questionnaire::find($id);
+
+      // Check if user is owner.
+      if($questionnaire->user_id == Auth::id()){
+        $questionnaire->delete();
+      }
+
+      return redirect('/home');
     }
 }

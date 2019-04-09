@@ -11,10 +11,10 @@
       ["QuestionnaireController@update", $edit->id] : "QuestionnaireController@store", 'id' => 'questionnaire-form')) !!}
         {{ csrf_field() }}
         @isset($edit)
-          <input type="hidden" name="_method" value="put" />
+          <input type="hidden" id="form-method" name="_method" value="put" />
         @endisset
         <div class="row row-head d-flex">
-          <h3 class="title">New Questionnaire</h3>
+          <h3 class="title">{{isset($edit) ? 'Edit' : 'New'}} Questionnaire</h3>
           <div class="ml-auto right">
             <p class=" ml-auto">Make Public</p>
             <div class="pretty p-switch p-fill">
@@ -23,6 +23,10 @@
                     <label> </label>
                 </div>
             </div>
+
+            @isset($edit)
+              <button id="delete-questionnaire" type="button"><i class="fas fa-trash"></i> Delete</button>
+            @endisset
             {!! Form::submit('Save', ['class' => 'btn btn-primary ml-auto']) !!}
           </div>
           {{-- <button  class="btn btn-primary ml-auto"><a href="{{ route('questionnaire/') }}">Save</a></button> --}}

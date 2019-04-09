@@ -55,7 +55,7 @@ textarea {
         font-size: 1.25em;
         letter-spacing: -0.05em;
         color: #b0aeae;
-        margin: 12.5px 0;
+        margin: 12.5px 10px;
       }
 
       & > .right {
@@ -71,6 +71,19 @@ textarea {
           font-size: 0.75em;
           font-weight: 600;
           color: #b0aeae;
+        }
+
+        & > #delete-questionnaire {
+          @include btn-secondary;
+          opacity: 0.6;
+          padding: 10px 25px;
+          font-weight: 600;
+          font-size: 0.65rem;
+          margin: 0 10px;
+
+          & > i {
+            margin: 0px 10px 0 -2.5px;
+          }
         }
       }
 

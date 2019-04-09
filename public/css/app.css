@@ -10466,7 +10466,7 @@ textarea {
   font-size: 1.25em;
   letter-spacing: -0.05em;
   color: #b0aeae;
-  margin: 12.5px 0;
+  margin: 12.5px 10px;
 }
 #questionnaire-container > #questionnaire-form > .row-head > .right {
   min-width: 250px;
@@ -10480,6 +10480,21 @@ textarea {
   font-size: 0.75em;
   font-weight: 600;
   color: #b0aeae;
+}
+#questionnaire-container > #questionnaire-form > .row-head > .right > #delete-questionnaire {
+  color: #6d6d6d;
+  border: 1.5px solid #6d6d6d;
+  border-radius: 35px;
+  outline: none;
+  background: none;
+  opacity: 0.6;
+  padding: 10px 25px;
+  font-weight: 600;
+  font-size: 0.65rem;
+  margin: 0 10px;
+}
+#questionnaire-container > #questionnaire-form > .row-head > .right > #delete-questionnaire > i {
+  margin: 0px 10px 0 -2.5px;
 }
 #questionnaire-container > #questionnaire-form > .title {
   font-size: 3em;
