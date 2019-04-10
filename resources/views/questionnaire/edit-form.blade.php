@@ -5,6 +5,17 @@
 @endsection
 
 @section('content')
+
+  @isset($edit)
+    <div id="overlay" class="hidden">
+      <div id="delete-modal">
+        <p>Are you sure you want to delete this questionnaire?</p>
+        <button type="button" class="primary-btn">Yes</button>
+        <button type="button">No</button>
+      </div>
+    </div>
+  @endisset
+
   <div id="questionnaire-container">
 
     {!! Form::open(array('action' => isset($edit) ?

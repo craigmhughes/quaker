@@ -10412,6 +10412,62 @@ nav.navbar ul.navbar-nav > li > a {
   color: #34bf49;
 }
 
+nav.navbar, #questionnaire-container {
+  transition: 0.8s;
+}
+
+#overlay {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  background: rgba(255, 255, 255, 0.6);
+  transition-duration: 0.6s;
+  opacity: 1;
+  pointer-events: all;
+}
+#overlay.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+#overlay.hidden > #delete-modal {
+  top: 100%;
+}
+#overlay > #delete-modal {
+  padding: 15px;
+  background: #fff;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.25);
+  border-radius: 15px;
+  min-width: 300px;
+  position: fixed;
+  top: calc(50% - 50px);
+  left: calc(50% - 150px);
+  text-align: center;
+  transition: 0.8s;
+}
+#overlay > #delete-modal > p {
+  width: 80%;
+  text-align: center;
+  margin: 0 auto 25px auto;
+}
+#overlay > #delete-modal > button {
+  color: #6d6d6d;
+  border: 1.5px solid #6d6d6d;
+  border-radius: 35px;
+  outline: none;
+  background: none;
+  padding: 15px 25px;
+  font-weight: 600;
+  font-size: 0.7rem;
+}
+#overlay > #delete-modal > button.primary-btn {
+  background: #34bf49;
+  border: none;
+  color: #fff;
+}
+
 textarea {
   box-sizing: border-box;
   resize: none;
@@ -10685,6 +10741,11 @@ body {
   user-select: none;
   /* Likely future */
   cursor: default;
+}
+
+.blur {
+  filter: blur(8px);
+  -webkit-filter: blur(8px);
 }
 
 /*# sourceMappingURL=app.css.map */

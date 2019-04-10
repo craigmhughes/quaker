@@ -57,3 +57,8 @@ body {
   user-select: none;          /* Likely future */
   cursor: default;
 }
+
+.blur {
+  filter: blur(8px);
+  -webkit-filter: blur(8px);
+}

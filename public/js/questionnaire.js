@@ -290,17 +290,50 @@ document.getElementById('add-q').addEventListener('click', ()=>{
   create_question();
 });
 
+let overlay = document.getElementById('overlay');
+
+let switchOverlay = ()=>{
+  overlay.className = overlay.className == "hidden" ? "" : "hidden";
+  document.querySelector("nav.navbar").style.filter = overlay.className == "hidden" ? "" : "blur(4px)";
+  document.getElementById('questionnaire-container').style.filter = overlay.className == "hidden" ? "" : "blur(4px)";
+};
+
+overlay.addEventListener('click', (e)=>{
+  if(e.target.getAttribute('id') == "overlay"){
+    switchOverlay();
+    return;
+
+  } else if(e.target.tagName == "BUTTON"){
+
+    if(e.target.getAttribute('class') == "primary-btn"){
+      document.getElementById('form-method').value = "delete";
+      document.getElementById('questionnaire-form').submit();
+
+    } else {
+      switchOverlay();
+      return;
+      
+    }
+
+  }
+});
+
 document.getElementById('delete-questionnaire').addEventListener('click', ()=>{
-  document.getElementById('form-method').value = "delete";
-  document.getElementById('questionnaire-form').submit();
+
+  switchOverlay();
+
+
+  // document.getElementsByTagName("body")[0].className = "blur";
+
 });
 
 
 // Prevent creating new question if in edit mode.
 if(window.location.href.indexOf('create') > 0){
   create_question();
+
 } else {
-  console.log('here');
+
   get_selects();
   update_question_count();
 }
