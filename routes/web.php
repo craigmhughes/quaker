@@ -13,7 +13,10 @@
 
 Route::get('/', function () { return view('welcome'); });
 
-
+Route::get('questionnaires/{id}', [
+  'as' => 'questionnaires.show',
+  'uses' => 'QuestionnaireController@show'
+]);
 
 
 Route::group(['middleware' => ['web']], function () {
@@ -26,5 +29,7 @@ Route::group(['middleware' => ['web']], function () {
       'as' => 'questionnaires.edit',
       'uses' => 'QuestionnaireController@edit'
     ]);
-    Route::resource('/questionnaires', 'QuestionnaireController', ['except' => 'edit']);
+
+    Route::resource('/questionnaires', 'QuestionnaireController', ['except' => ['edit', 'show']]);
+    Route::resource('/responses', 'ResponseController');
 });

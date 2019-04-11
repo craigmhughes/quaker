@@ -110,8 +110,8 @@
                     $option = $question->options[$j];
                      echo '
                      <div class="closed-option">
-                       <div class="pretty p-curve p-pulse p-icon">
-                         <input type="checkbox" />
+                      <div class="pretty p-curve p-pulse p-icon">
+                        <input type="checkbox"/>
                          <div class="state p-success">
                              <i class="icon fas fa-check"></i>
                              <label></label>

@@ -10647,9 +10647,13 @@ textarea {
   min-width: 50px;
   padding-left: 10px;
 }
-#questionnaire-container > #questionnaire-form #question-section > .question > .question-inputs > .closed-option > input.closed-value {
+#questionnaire-container > #questionnaire-form #question-section > .question > .question-inputs > .closed-option > .closed-value {
   font-weight: 500;
   letter-spacing: -0.025em;
+}
+#questionnaire-container > #questionnaire-form #question-section > .question > .question-inputs > .closed-option > .pretty {
+  float: left;
+  top: 5px;
 }
 #questionnaire-container > #questionnaire-form #question-section > .question > .question-inputs > .closed-option > .pretty i.icon {
   font-size: 0.6em;
@@ -10699,6 +10703,9 @@ textarea {
 #questionnaire-container > #questionnaire-form #question-section > .question:hover > .remove-question {
   opacity: 1;
 }
+#questionnaire-container.view > #questionnaire-form > #question-section > .question {
+  padding-bottom: 0;
+}
 
 .navbar-laravel {
   background-color: #fff;
@@ -10732,13 +10739,13 @@ body {
 }
 
 .noselect {
-  -webkit-user-select: none;
+  -webkit-user-select: none !important;
   /* Chrome all / Safari all */
-  -moz-user-select: none;
+  -moz-user-select: none !important;
   /* Firefox all */
-  -ms-user-select: none;
+  -ms-user-select: none !important;
   /* IE 10+ */
-  user-select: none;
+  user-select: none !important;
   /* Likely future */
   cursor: default;
 }

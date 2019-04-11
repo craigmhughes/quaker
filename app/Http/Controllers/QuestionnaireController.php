@@ -18,7 +18,7 @@ class QuestionnaireController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        // $this->middleware('auth');
     }
 
     /**
@@ -28,7 +28,8 @@ class QuestionnaireController extends Controller
      */
     public function index()
     {
-        //
+        $this->middleware('auth');
+        return redirect('/home');
     }
 
     /**
@@ -38,7 +39,7 @@ class QuestionnaireController extends Controller
      */
     public function create()
     {
-
+        $this->middleware('auth');
         return view('questionnaire.edit-form');
     }
 
@@ -50,7 +51,7 @@ class QuestionnaireController extends Controller
      */
     public function store(Request $request)
     {
-
+        $this->middleware('auth');
         // dd($request);
 
         $is_public = isset($request['is_public']) ? 1 : 0;
@@ -106,7 +107,15 @@ class QuestionnaireController extends Controller
      */
     public function show($id)
     {
-        //
+      $view = Questionnaire::find($id);
+
+      /* Disable other users from editing questionnaires
+      not belonging to them */
+      if(!$view['is_public'] || $view == null){
+        return redirect('/');
+      }
+
+      return view('questionnaire.answer-form', ['view' => $view]);
     }
 
     /**
@@ -117,6 +126,8 @@ class QuestionnaireController extends Controller
      */
     public function edit($id)
     {
+      $this->middleware('auth');
+
       $edit = Questionnaire::find($id);
 
       /* Disable other users from editing questionnaires
@@ -137,6 +148,7 @@ class QuestionnaireController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->middleware('auth');
         $edit = $request->all();
 
         // dd($request);
@@ -318,6 +330,7 @@ class QuestionnaireController extends Controller
      */
     public function destroy($id)
     {
+      $this->middleware('auth');
       $questionnaire = Questionnaire::find($id);
 
       // Check if user is owner.

@@ -231,6 +231,12 @@ function remove_option(el){
   *   Add Click Listener on Type inputs.
   */
 document.getElementById('question-section').addEventListener('click', function(e){
+
+  // Disable input clicks
+  if (e.target.parentNode.className.includes("pretty")){
+    e.preventDefault();
+  }
+
   // Event to execute on question type dropdown.
   if (e.target.tagName === "SELECT"){
 
@@ -312,19 +318,14 @@ overlay.addEventListener('click', (e)=>{
     } else {
       switchOverlay();
       return;
-      
+
     }
 
   }
 });
 
 document.getElementById('delete-questionnaire').addEventListener('click', ()=>{
-
   switchOverlay();
-
-
-  // document.getElementsByTagName("body")[0].className = "blur";
-
 });
 
 
