@@ -24,4 +24,9 @@ class Question extends Model
   {
       return $this->hasMany('App\Option');
   }
+
+  public function responses()
+  {
+      return $this->hasMany('App\Response');
+  }
 }

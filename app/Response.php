@@ -14,4 +14,9 @@ class Response extends Model
   protected $fillable = [
       'question_id', 'type', 'response',
   ];
+
+  public function question()
+  {
+      return $this->belongsTo('App\Question','question_id');
+  }
 }

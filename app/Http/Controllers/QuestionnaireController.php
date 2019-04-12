@@ -303,7 +303,9 @@ class QuestionnaireController extends Controller
               }
 
               if(!$found){
-                Question::find($questionnaire->questions[$j]['id'])->delete();
+                $del_question = Question::find($questionnaire->questions[$j]['id']);
+                $del_question->responses()->delete();
+                $del_question->delete();
               }
             }
 
