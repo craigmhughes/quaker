@@ -18,6 +18,11 @@ Route::get('questionnaires/{id}', [
   'uses' => 'QuestionnaireController@show'
 ]);
 
+Route::get('responses/get/{id}', [
+  'as' => 'responses.get',
+  'uses' => 'ResponseController@get'
+]);
+
 
 Route::group(['middleware' => ['web']], function () {
     Auth::routes();
@@ -32,4 +37,6 @@ Route::group(['middleware' => ['web']], function () {
 
     Route::resource('/questionnaires', 'QuestionnaireController', ['except' => ['edit', 'show']]);
     Route::resource('/responses', 'ResponseController');
+
+
 });

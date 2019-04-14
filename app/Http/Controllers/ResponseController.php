@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Response;
+use App\Question;
 
 class ResponseController extends Controller
 {
@@ -61,7 +62,30 @@ class ResponseController extends Controller
      */
     public function show($id)
     {
-        //
+        $questions = Question::all()->where('questionnaire_id', $id);
+        $responses = [];
+
+        foreach ($questions as $question) {
+          if(count($question->responses) > 0){
+            array_push($responses, $question->responses);
+          }
+        }
+
+        return view('responses.show', [
+          'responses' => $responses,
+          'questions' => $questions
+        ]);
+    }
+
+    public function get(Request $request, $id){
+      if($request->ajax()){
+        $resp = [];
+        foreach( Response::all()->where('question_id', $id) as $response ){
+          array_push($resp, $response);
+        }
+        return $resp;
+      }
+      return redirect('/');
     }
 
     /**

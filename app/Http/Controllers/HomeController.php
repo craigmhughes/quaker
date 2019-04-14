@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Questionnaire;
-use App\Question;
 use App\Response;
 use Auth;
 
@@ -30,9 +29,21 @@ class HomeController extends Controller
     {
 
       $qres = Questionnaire::all()->where('user_id', Auth::id());
+      $resp = [];
+
+      foreach ($qres as $qre) {
+        foreach ($qre->questions as $question) {
+          if(count($question->responses) > 0){
+            array_push($resp, $question->responses);
+          }
+        }
+      }
+
+      // dd($resp);
 
       return view('home', [
         'questionnaires' => $qres,
+        'responses' => $resp,
       ]);
     }
 }

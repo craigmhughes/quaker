@@ -18,15 +18,17 @@
           </tr>
         </thead>
         <tbody>
-          @foreach ($questionnaires as $key => $value)
+          @foreach ($questionnaires as $questionnaire)
             <tr>
-              <th scope="row" onclick="location.href='{{"/questionnaires/edit/" . $value->id}}'">{{$value->title}}</th>
-              <td>{{date('jS F Y', strtotime($value->created_at))}}</td>
-              <td><i class="fas fa-circle {{$value->is_public ? 'public' : 'private'}}"></i>{{$value->is_public ? 'Public' : 'Private'}}</td>
-              <td>
+              <th scope="row" onclick="location.href='{{"/questionnaires/edit/" . $questionnaire->id}}'">{{$questionnaire->title}}</th>
+              <td>{{date('jS F Y', strtotime($questionnaire->created_at))}}</td>
+              <td><i class="fas fa-circle {{$questionnaire->is_public ? 'public' : 'private'}}"></i>{{$questionnaire->is_public ? 'Public' : 'Private'}}</td>
+              <td onclick="location.href='{{"/responses/" . $questionnaire->id}}'">
                 <?php $resp_val = 0; ?>
-                @foreach (App\Question::all()->where('questionnaire_id', $value->id) as $key => $val)
-                  <?php $resp_val += sizeof(App\Response::all()->where('question_id', $val->id)) ?>
+                @foreach ($questionnaire->questions as $question)
+                  <?php
+                    $resp_val += sizeof($question->responses);
+                  ?>
                 @endforeach
                 {{ $resp_val }}
               </td>
@@ -34,6 +36,7 @@
           @endforeach
         </tbody>
       </table>
+
     @else
       <p>No Questionnaires to show</p>
     @endif
