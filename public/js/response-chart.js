@@ -43,7 +43,7 @@ for (let i = 0; i < question_ids.length; i++) {
   total_freq.push(freq);
 
   if(i == question_ids.length-1){
-    setTimeout(()=>{generate_charts()}, 1000);
+    setTimeout(()=>{generate_charts()}, 200);
   }
 }
 
@@ -51,10 +51,10 @@ for (let i = 0; i < question_ids.length; i++) {
 
 var charts = [];
 
-function create_new_chart(chart_el, chart_type, chart_labels, chart_data){
+function create_new_chart(chart_el, chart_labels, chart_data){
   let ctx = chart_el.getContext('2d');
   let my_chart = new Chart(ctx, {
-      type: chart_type == "open" ? "bar" : "pie",
+      type: "pie",
       data: {
           labels: chart_labels,
           datasets: [{
@@ -81,8 +81,22 @@ function create_new_chart(chart_el, chart_type, chart_labels, chart_data){
 
 function generate_charts(){
   for (var i = 0; i < total_labels.length; i++) {
-    console.log(total_types[i]);
-    create_new_chart(document.getElementsByClassName("chart-element")[i],
-    total_types[i], total_labels[i], total_freq[i]);
+    if(total_types[i] == "closed"){
+      create_new_chart(document.getElementsByClassName("chart-element")[i],
+      total_labels[i], total_freq[i]);
+    } else {
+      document.getElementsByClassName("chart-element")[i].style.height = 0;
+
+      let response_div = document.getElementsByClassName("response")[i];
+      response_div.innerHTML += '<div class="open-responses"></div>';
+
+      let total_resp_div = response_div.getElementsByClassName("open-responses")[0];
+
+      console.log(total_labels[i].length);
+
+      for (var j = 0; j < total_labels[i].length; j++) {
+        total_resp_div.innerHTML += `<p>${total_labels[i][j]}</p>`;
+      }
+    }
   }
 }
