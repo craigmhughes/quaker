@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title')
+  Responses
+@endsection
+
 @section('include-scripts')
   <script src="{{asset('js/Chart.min.js')}}"></script>
   <script src="{{asset('js/response-chart.js')}}" defer></script>

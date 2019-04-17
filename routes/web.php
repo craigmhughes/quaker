@@ -23,9 +23,7 @@ Route::get('questionnaires/answer/{id}', [
   'uses' => 'QuestionnaireController@show'
 ]);
 
-Route::get('questionnaires/{id}', function(){
-  return redirect('/');
-});
+Route::get('/questionnaires/{id}', function () { return redirect('/'); });
 
 
 Route::group(['middleware' => ['web']], function () {
@@ -39,7 +37,7 @@ Route::group(['middleware' => ['web']], function () {
       'uses' => 'QuestionnaireController@edit'
     ]);
 
-    Route::get('questionnaires/create', [
+    Route::get('questionnaires/create/new', [
       'as' => 'questionnaires.create',
       'uses' => 'QuestionnaireController@create'
     ]);

@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title')
+  Dashboard
+@endsection
+
 @section('content')
   <div id="page-content" class="row justify-content-start">
     <div class="row-head">

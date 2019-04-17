@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title')
+  Answer Questionnaire
+@endsection
+
 @section('include-scripts')
   <script src="{{ asset('js/response.js') }}" defer></script>
 @endsection

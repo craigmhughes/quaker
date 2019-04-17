@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title')
+  <?php echo isset($edit) ? 'Edit Questionnaire' : 'Create Questionnaire' ?>
+@endsection
+
 @section('include-scripts')
   <script src="{{ asset('js/questionnaire.js') }}" defer></script>
   <script src="{{ asset('js/delete-questionnaire.js') }}" defer></script>
