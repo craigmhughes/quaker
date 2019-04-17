@@ -23,6 +23,10 @@ Route::get('questionnaires/answer/{id}', [
   'uses' => 'QuestionnaireController@show'
 ]);
 
+Route::get('questionnaires/{id}', function(){
+  return redirect('/');
+});
+
 
 Route::group(['middleware' => ['web']], function () {
     Auth::routes();
