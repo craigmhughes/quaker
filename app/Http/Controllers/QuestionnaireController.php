@@ -39,8 +39,12 @@ class QuestionnaireController extends Controller
      */
     public function create()
     {
-        $this->middleware('auth');
-        return view('questionnaire.edit-form');
+        // Being weird with auth middleware. Must use check.
+        if(Auth::check()){
+          return view('questionnaire.edit-form');
+        }
+
+        return redirect('/');
     }
 
     /**

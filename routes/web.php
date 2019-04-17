@@ -13,14 +13,14 @@
 
 Route::get('/', function () { return view('welcome'); });
 
-Route::get('questionnaires/{id}', [
-  'as' => 'questionnaires.show',
-  'uses' => 'QuestionnaireController@show'
-]);
-
 Route::get('responses/get/{id}', [
   'as' => 'responses.get',
   'uses' => 'ResponseController@get'
+]);
+
+Route::get('questionnaires/answer/{id}', [
+  'as' => 'questionnaires.show',
+  'uses' => 'QuestionnaireController@show'
 ]);
 
 
@@ -35,7 +35,12 @@ Route::group(['middleware' => ['web']], function () {
       'uses' => 'QuestionnaireController@edit'
     ]);
 
-    Route::resource('/questionnaires', 'QuestionnaireController', ['except' => ['edit', 'show']]);
+    Route::get('questionnaires/create', [
+      'as' => 'questionnaires.create',
+      'uses' => 'QuestionnaireController@create'
+    ]);
+
+    Route::resource('/questionnaires', 'QuestionnaireController', ['except' => ['edit', 'show', 'create']]);
     Route::resource('/responses', 'ResponseController');
 
 

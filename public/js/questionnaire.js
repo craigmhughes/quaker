@@ -296,37 +296,14 @@ document.getElementById('add-q').addEventListener('click', ()=>{
   create_question();
 });
 
-let overlay = document.getElementById('overlay');
 
-let switchOverlay = ()=>{
-  overlay.className = overlay.className == "hidden" ? "" : "hidden";
-  document.querySelector("nav.navbar").style.filter = overlay.className == "hidden" ? "" : "blur(4px)";
-  document.getElementById('questionnaire-container').style.filter = overlay.className == "hidden" ? "" : "blur(4px)";
-};
 
-overlay.addEventListener('click', (e)=>{
-  if(e.target.getAttribute('id') == "overlay"){
+
+if (document.getElementById('delete-questionnaire') !== null){
+  document.getElementById('delete-questionnaire').addEventListener('click', ()=>{
     switchOverlay();
-    return;
-
-  } else if(e.target.tagName == "BUTTON"){
-
-    if(e.target.getAttribute('class') == "primary-btn"){
-      document.getElementById('form-method').value = "delete";
-      document.getElementById('questionnaire-form').submit();
-
-    } else {
-      switchOverlay();
-      return;
-
-    }
-
-  }
-});
-
-document.getElementById('delete-questionnaire').addEventListener('click', ()=>{
-  switchOverlay();
-});
+  });
+}
 
 
 // Prevent creating new question if in edit mode.

@@ -34,17 +34,13 @@ $I->see('New Questionnaire', 'h3');
 // Submit only required fields and see if app handles rest.
 $I->submitForm('#questionnaire-form', [
     'title' => 'Qre 2',
-    'questions' => array(
-      [
-        'title' => 'Test Question 1',
-        'type' => 'open'
-      ],
-      [
-        'title' => 'Test Question 2',
-        'type' => 'closed',
-        'options' => ['one','two','three'],
-      ]
-    )
+
+    'questions[0][title]' => 'Test Question 1',
+    'questions[0][type]' => 'open',
+
+    'questions[1][title]' => 'Test Question 2',
+    'questions[1][type]' => 'closed',
+    'questions[1][options][0][title]' => 'one',
 ]);
 
 // Then

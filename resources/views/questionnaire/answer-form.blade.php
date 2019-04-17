@@ -5,7 +5,6 @@
 @endsection
 
 @section('content')
-
   <!-- TODO: Change input values to be readable for the ResponseController -->
   <div id="questionnaire-container" class="view">
 

@@ -20,7 +20,7 @@
         <tbody>
           @foreach ($questionnaires as $questionnaire)
             <tr>
-              <th scope="row" onclick="location.href='{{"/questionnaires/edit/" . $questionnaire->id}}'">{{$questionnaire->title}}</th>
+              <th scope="row" name="{{$questionnaire->title}}" onclick="location.href='{{"/questionnaires/edit/" . $questionnaire->id}}'">{{$questionnaire->title}}</th>
               <td>{{date('jS F Y', strtotime($questionnaire->created_at))}}</td>
               <td><i class="fas fa-circle {{$questionnaire->is_public ? 'public' : 'private'}}"></i>{{$questionnaire->is_public ? 'Public' : 'Private'}}</td>
               <td onclick="location.href='{{"/responses/" . $questionnaire->id}}'">

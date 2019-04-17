@@ -2,6 +2,7 @@
 
 @section('include-scripts')
   <script src="{{ asset('js/questionnaire.js') }}" defer></script>
+  <script src="{{ asset('js/delete-questionnaire.js') }}" defer></script>
 @endsection
 
 @section('content')
@@ -72,7 +73,7 @@
                 $question = $edit->questions[$i];
 
                 echo '
-                <div class="question">
+                <div class="question" value="'. $i .'">
                   <div class="row">
 
                     <textarea type="text" data-autoresize rows="1"  class="title" name="questions[' . $i . '][title]" autocomplete="off" placeholder="Untitled Open Question">' . $question->title . '</textarea>
