@@ -21,6 +21,9 @@ class EditQuestionnaireCest
 
       $I->see("Edit Questionnaire");
 
+      $I->fillField("title", "Edited Questionnaire 1");
+      $I->fillField("description", "Edited Desc");
+
       // Start Delete Question.
         // See question 1
         $I->seeElement("textarea[name='questions[0][title]']");
@@ -49,6 +52,29 @@ class EditQuestionnaireCest
 
       $I->click("Save");
       $I->seeCurrentURLEquals("/home");
+
+      // Start Delete Question & save
+        $I->see("Edited Questionnaire 1");
+        $I->click("th[name='Edited Questionnaire 1']");
+
+        $I->see("Edit Questionnaire");
+
+        // Start Delete Question.
+          // See question 1
+          $I->seeElement("textarea[name='questions[0][title]']");
+          // Remove Question 1
+          $I->click(".question:nth-child(1) .remove-question");
+          // See that question 2 has become question 1
+          $I->seeElement("textarea[name='questions[0][title]']");
+        // End Delete Question
+
+        $I->click("Save");
+        $I->seeCurrentURLEquals("/home");
+      // End Delete Question & save
+
+
+
+
 
     }
 }
