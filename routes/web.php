@@ -11,7 +11,14 @@
 |
 */
 
-Route::get('/', function () { return view('welcome'); });
+Route::get('/', function () {
+
+  if(Session::get('resp') !== null){
+    return view('welcome', ['resp' => true]);
+  }
+  
+  return view('welcome');
+});
 
 Route::get('responses/get/{id}', [
   'as' => 'responses.get',

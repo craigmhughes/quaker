@@ -36,6 +36,7 @@ class ResponseController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request);
         for ($i=0; $i < count($request->response); $i++) {
           $resp = $request->response[$i];
 
@@ -51,7 +52,7 @@ class ResponseController extends Controller
         }
 
         // TODO: create completed page
-        return redirect('/');
+        return redirect('/')->with(['resp' => true]);
     }
 
     /**

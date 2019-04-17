@@ -2,6 +2,9 @@
 
 @section('content')
   <section id="landing-page">
+    @isset($resp)
+      <h1>Thank you for your time.</h1>
+    @endisset
     <div id="intro-message">
       <h1>Welcome Message.</h1>
       <br/>
