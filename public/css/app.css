@@ -10361,20 +10361,16 @@ nav.navbar ul.navbar-nav > li > a {
 }
 
 #intro-message {
-  width: 50%;
-  min-width: 300px;
-  max-width: 500px;
-  margin-top: 8em;
+  margin-top: 15em;
+  font-family: "Nunito", sans-serif;
 }
 #intro-message > h1 {
   font-size: 4.5em;
-  font-weight: 900;
   line-height: 90%;
   letter-spacing: -0.075rem;
 }
 #intro-message > p {
-  font-size: 1em;
-  color: grey;
+  font-size: 1.2em;
 }
 
 .row-head {

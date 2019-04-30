@@ -4,20 +4,19 @@
 }
 
 #intro-message {
-  width: 50%;
-  min-width: 300px;
-  max-width: 500px;
-  margin-top: 8em;
+  margin-top: 15em;
+  // text-align: center;
+  font-family: 'Nunito', sans-serif;
 
   & > h1 {
     font-size: 4.5em;
-    font-weight: 900;
+
     line-height: 90%;
     letter-spacing: -0.075rem;
+
   }
 
   & > p {
-    font-size: 1em;
-    color: grey;
+    font-size: 1.2em;
   }
 }

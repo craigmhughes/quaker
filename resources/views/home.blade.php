@@ -18,7 +18,7 @@
   <div id="page-content" class="row justify-content-start">
     <div class="row-head">
       <h1 class="title">Questionnaires</h1>
-      <button  class="btn btn-primary ml-auto"><a href="{{ route('questionnaires.create') }}">Create Questionnaire</a></button>
+      <button  class="btn btn-primary ml-auto" onclick="location.href='/questionnaires/create/new'"><a href="{{ route('questionnaires.create') }}">Create Questionnaire</a></button>
     </div>
 
     @if (isset($questionnaires) && sizeof($questionnaires) > 0)

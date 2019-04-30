@@ -69,7 +69,15 @@ class QuestionnaireController extends Controller
         ]);
 
         foreach($request['questions'] as $question){
+          if($question['title'] == null || strlen($question['title']) < 1){
+            return Redirect::back()->withErrors(['Found Null question title, please fix and resubmit.']);
+          }
+
           if($question['type'] == "closed"){
+            if(!isset($question['options'])){
+              return Redirect::back()->withErrors(['Found Null option, please fix and resubmit.']);
+            }
+
             foreach($question['options'] as $option){
               if($option['title'] == null || strlen($option['title']) < 1){
                 return Redirect::back()->withErrors(['Found Null option, please fix and resubmit.']);
@@ -176,6 +184,10 @@ class QuestionnaireController extends Controller
         ]);
 
         foreach($request['questions'] as $question){
+          if($question['title'] == null || strlen($question['title']) < 1){
+            return Redirect::back()->withErrors(['Found Null question title, please fix and resubmit.']);
+          }
+
           if($question['type'] == "closed"){
             if(!isset($question['options'])){
               return Redirect::back()->withErrors(['Found Null option, please fix and resubmit.']);

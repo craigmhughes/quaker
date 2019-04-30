@@ -11,7 +11,7 @@
 
 @section('content')
   @if (!isset($responses) || count($responses) < 1)
-    @redirect('/home')
+    <script>window.location = "/home";</script>
   @else
 
     {{---------------- GATHER DATA FOR USE IN CHART ELEMENTS -----------------}}
