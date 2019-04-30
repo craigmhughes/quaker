@@ -10,4 +10,5 @@ modules:
         - WebDriver:
              url: 'http://localhost:8000/'
              browser: chrome
+             port: 9515 # ChromeDriver port
         - \Helper\Acceptance

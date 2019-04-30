@@ -10304,33 +10304,33 @@ h3 {
   }
 }
 nav.navbar {
-  background: none;
-  border-top: 5px solid #34bf49;
-  color: #222;
+  background: #fff;
   height: auto !important;
+  padding: 2em 0;
 }
 nav.navbar > .container {
+  width: 100%;
+  height: 6em;
   display: flex;
-  padding: 30px 0;
 }
 nav.navbar a.navbar-brand {
-  font-weight: 700;
-  color: #222;
-  letter-spacing: 0.1px;
+  height: 100%;
+  text-align: center;
+  margin: 0;
 }
-nav.navbar a.navbar-brand > i {
-  color: #34bf49;
-  margin-right: 10px;
+nav.navbar a.navbar-brand > img {
+  margin: 0.8em auto;
+  fill: #2068dd;
 }
 nav.navbar ul.navbar-nav > li {
   font-size: 0.9em;
-  font-weight: 800;
+  font-weight: 500;
 }
-nav.navbar ul.navbar-nav > li.btn-primary {
+nav.navbar ul.navbar-nav > li.primary {
   margin: 0 20px;
 }
-nav.navbar ul.navbar-nav > li.btn-primary > a {
-  color: #fff;
+nav.navbar ul.navbar-nav > li.primary > a {
+  color: #2068dd;
 }
 nav.navbar ul.navbar-nav > li > a {
   color: #b0aeae;
@@ -10359,14 +10359,91 @@ nav.navbar ul.navbar-nav > li > a {
 
 .row-head {
   width: 100%;
-  display: flex;
+  display: grid;
+  border-bottom: 1px solid lightgrey;
+  grid-template-columns: 8fr 2fr;
+  padding: 10px;
 }
 .row-head > h1.title {
-  font-weight: 300;
+  font-weight: 400;
   letter-spacing: -0.05em;
   font-size: 1.8em;
+  margin: 1.1em 30px;
 }
-
+#page-content {
+  width: calc(100% + 50px);
+  margin: 0 auto;
+  margin-top: 2em;
+}
+#page-content > .questionnaire-entry {
+  padding: 2.5em 3em 2em 3em;
+  background: #fff;
+  margin: 1em;
+  width: 550px;
+  display: grid;
+  grid-template-columns: 7fr 3fr;
+  border-left: 10px solid #e3e3e3;
+  border-radius: 5px;
+  transition-duration: 0.4s;
+}
+#page-content > .questionnaire-entry:hover {
+  border-left: 10px solid #2068dd;
+}
+#page-content > .questionnaire-entry:hover .btn-secondary {
+  opacity: 1;
+}
+#page-content > .questionnaire-entry > .left {
+  padding: 0 1.5em;
+  padding-left: 0;
+}
+#page-content > .questionnaire-entry > .right {
+  padding: 0 0.5em;
+  display: grid;
+  grid-auto-rows: 20% 60% 20%;
+}
+#page-content > .questionnaire-entry h1 {
+  font-size: 1.5em;
+  letter-spacing: -0.05rem;
+  font-weight: 600;
+  cursor: pointer;
+  max-width: 80%;
+}
+#page-content > .questionnaire-entry .btn-secondary {
+  color: #6d6d6d;
+  border: 1.5px solid #6d6d6d;
+  border-radius: 0px;
+  outline: none;
+  background: none;
+  padding: 0.75em 2.5em;
+  font-size: 0.8em;
+  opacity: 0;
+}
+#page-content > .questionnaire-entry .btn-2 {
+  background: #2068dd;
+  color: #fff;
+  border: none;
+  padding: 1em 2.5em;
+}
+#page-content > .questionnaire-entry p {
+  color: grey;
+}
+#page-content > .questionnaire-entry p.resp-val {
+  cursor: pointer;
+}
+#page-content > .questionnaire-entry p.is_public {
+  position: relative;
+  left: -0.5rem;
+}
+#page-content > .questionnaire-entry p > i.fa-circle {
+  font-size: 0.4em;
+  margin: 0 20px 0 10px;
+  position: relative;
+  top: -2.5px;
+  color: grey;
+}
+#page-content > .questionnaire-entry p > i.fa-circle.public {
+  color: #2068dd;
+}
 #page-content > .table {
   margin-top: 1em;
 }
@@ -10409,7 +10486,7 @@ nav.navbar ul.navbar-nav > li > a {
   color: grey;
 }
 #page-content > .table > tbody td > i.fa-circle.public {
-  color: #34bf49;
+  color: #2068dd;
 }
 
 nav.navbar, #questionnaire-container {
@@ -10455,7 +10532,7 @@ nav.navbar, #questionnaire-container {
 #overlay > #delete-modal > button {
   color: #6d6d6d;
   border: 1.5px solid #6d6d6d;
-  border-radius: 35px;
+  border-radius: 0px;
   outline: none;
   background: none;
   padding: 15px 25px;
@@ -10463,7 +10540,7 @@ nav.navbar, #questionnaire-container {
   font-size: 0.7rem;
 }
 #overlay > #delete-modal > button.primary-btn {
-  background: #34bf49;
+  background: #2068dd;
   border: none;
   color: #fff;
 }
@@ -10476,15 +10553,16 @@ textarea {
 #add-q {
   color: #6d6d6d;
   border: 1.5px solid #6d6d6d;
-  border-radius: 35px;
+  border-radius: 0px;
   outline: none;
   background: none;
-  background: #34bf49;
+  background: #2068dd;
   border: none;
   color: #fff;
-  padding: 15px 25px;
+  padding: 30px 25px;
   font-weight: 600;
-  font-size: 0.7rem;
+  font-size: 0.75rem;
+  width: 100%;
 }
 #add-q > i {
   margin-right: 5px;
@@ -10506,33 +10584,36 @@ textarea {
 }
 
 #questionnaire-container {
-  width: 65%;
+  width: 70%;
   min-width: 300px;
   max-width: 1800px;
   margin: 0 auto;
 }
 #questionnaire-container > #questionnaire-form {
   width: 100%;
+  background: #fff;
 }
 #questionnaire-container > #questionnaire-form > .row-head {
   margin: 0;
   margin-bottom: 2.5em;
+  padding-left: 2em;
 }
 #questionnaire-container > #questionnaire-form > .row-head > h3.title {
   font-size: 1.25em;
   letter-spacing: -0.05em;
   color: #b0aeae;
   margin: 12.5px 10px;
+  margin-top: 20px;
 }
 #questionnaire-container > #questionnaire-form > .row-head > .right {
   min-width: 250px;
   display: flex;
 }
 #questionnaire-container > #questionnaire-form > .row-head > .right > .pretty {
-  margin-top: 15px;
+  margin-top: 20px;
 }
 #questionnaire-container > #questionnaire-form > .row-head > .right > p {
-  margin: 13px 10px 0 0;
+  margin: 20px 10px 0 0;
   font-size: 0.75em;
   font-weight: 600;
   color: #b0aeae;
@@ -10540,7 +10621,7 @@ textarea {
 #questionnaire-container > #questionnaire-form > .row-head > .right > #delete-questionnaire {
   color: #6d6d6d;
   border: 1.5px solid #6d6d6d;
-  border-radius: 35px;
+  border-radius: 0px;
   outline: none;
   background: none;
   opacity: 0.6;
@@ -10560,6 +10641,7 @@ textarea {
   max-height: 12.5em;
   line-height: 100%;
   overflow: hidden;
+  padding: 0 1em;
 }
 #questionnaire-container > #questionnaire-form > .desc {
   letter-spacing: -0.05rem;
@@ -10573,6 +10655,10 @@ textarea {
   max-height: 6em;
   min-width: 100%;
   overflow: hidden;
+  padding: 0 2.5em;
+}
+#questionnaire-container > #questionnaire-form #question-section {
+  padding: 0 2.5em;
 }
 #questionnaire-container > #questionnaire-form #question-section > .question {
   padding: 30px 0px;
@@ -10602,7 +10688,7 @@ textarea {
 #questionnaire-container > #questionnaire-form #question-section > .question > .row > .question-select {
   color: #6d6d6d;
   border: 1.5px solid #6d6d6d;
-  border-radius: 35px;
+  border-radius: 0px;
   outline: none;
   background: none;
   max-height: 45px;
@@ -10668,7 +10754,7 @@ textarea {
 #questionnaire-container > #questionnaire-form #question-section > .question > .add-option {
   color: #6d6d6d;
   border: 1.5px solid #6d6d6d;
-  border-radius: 35px;
+  border-radius: 0px;
   outline: none;
   background: none;
   padding: 10px 25px;
@@ -10686,7 +10772,7 @@ textarea {
 #questionnaire-container > #questionnaire-form #question-section > .question > .remove-question {
   color: #6d6d6d;
   border: 1.5px solid #6d6d6d;
-  border-radius: 35px;
+  border-radius: 0px;
   outline: none;
   background: none;
   padding: 10px 0px;
@@ -10723,16 +10809,18 @@ textarea {
 }
 
 body {
-  background: #fff;
+  background: #e9ecef;
   height: 100%;
 }
 
 .btn-primary {
-  background: #34bf49;
-  padding: 10px 30px;
-  border-radius: 30px;
+  background: #2068dd;
+  padding: 20px 30px;
+  border-radius: 0px;
   outline: none;
   border: none;
+  font-size: 0.7rem;
+  font-weight: 500;
 }
 .btn-primary > a {
   color: #fff;

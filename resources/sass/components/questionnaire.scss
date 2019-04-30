@@ -72,9 +72,10 @@ textarea {
   background: $brand-color;
   border: none;
   color: #fff;
-  padding: 15px 25px;
+  padding: 30px 25px;
   font-weight: 600;
-  font-size: 0.7rem;
+  font-size: 0.75rem;
+  width: 100%;
 
   & > i {
     margin-right: 5px;
@@ -100,18 +101,19 @@ textarea {
 }
 
 #questionnaire-container {
-  width: 65%;
+  width: 70%;
   min-width: 300px;
   max-width: 1800px;
   margin: 0 auto;
 
   & > #questionnaire-form {
     width: 100%;
-
+    background: #fff;
 
     & > .row-head {
       margin: 0;
       margin-bottom: 2.5em;
+      padding-left: 2em;
 
 
       & > h3.title {
@@ -119,6 +121,7 @@ textarea {
         letter-spacing: -0.05em;
         color: #b0aeae;
         margin: 12.5px 10px;
+        margin-top: 20px;
       }
 
       & > .right {
@@ -126,11 +129,11 @@ textarea {
         display: flex;
 
         & > .pretty {
-          margin-top: 15px;
+          margin-top: 20px;
         }
 
         & > p {
-          margin: 13px 10px 0 0;
+          margin: 20px 10px 0 0;
           font-size: 0.75em;
           font-weight: 600;
           color: #b0aeae;
@@ -160,6 +163,7 @@ textarea {
       max-height: 12.5em;
       line-height: 100%;
       overflow: hidden;
+      padding: 0 1em;
     }
 
     & > .desc {
@@ -174,10 +178,12 @@ textarea {
       max-height: 6em;
       min-width: 100%;
       overflow: hidden;
+      padding: 0 2.5em;
     }
 
 
     #question-section {
+      padding: 0 2.5em;
 
       & > .question {
         padding: 30px 0px;

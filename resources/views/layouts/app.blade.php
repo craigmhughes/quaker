@@ -2,7 +2,7 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -25,14 +25,14 @@
   <div id="app">
     <nav class="navbar navbar-expand-md">
       <div class="container">
-        <a class="navbar-brand" @guest href="/" @else href="/home" @endif ><i class="fas fa-list-alt"></i>QMaker</a></a>
+        <a class="navbar-brand" @guest href="/" @else href="/home" @endif ><img src="{{asset('img/qmaker.svg')}}" width="100"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
           <ul class="navbar-nav ml-auto">
             @guest
-              <li class="btn-primary"><a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a></li>
+                <li class="primary"><a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a></li>
               @if (Route::has('register'))
                 <li class="nav-item"><a class="nav-link" href="{{ route('register') }}">{{ __('Sign up') }}</a></li>
               @endif

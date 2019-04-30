@@ -1,36 +1,39 @@
 nav.navbar {
-  background: none;
-  border-top: 5px solid $brand-color;
-  color: #222;
+  background: #fff;
   height: auto!important;
+  padding:2em 0;
 
   & > .container {
+    width: 100%;
+    height: 6em;
     display: flex;
-    padding: 30px 0;
+
   }
 
   & a.navbar-brand {
-    font-weight: 700;
-    color: #222;
-    letter-spacing: 0.1px;
+    height: 100%;
+    text-align: center;
+    margin:0;
 
-    & > i {
-      color: $brand-color;
-      margin-right: 10px;
+    & > img {
+      margin: 0.8em auto;
+      fill: $brand-color;
     }
+
+
   }
 
   & ul.navbar-nav {
 
     & > li {
       font-size: 0.9em;
-      font-weight: 800;
+      font-weight: 500;
 
-      &.btn-primary {
+      &.primary {
         margin: 0 20px;
 
         & > a {
-          color: #fff;
+          color: $brand-color;
         }
       }
 

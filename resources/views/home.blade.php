@@ -12,35 +12,32 @@
     </div>
 
     @if (isset($questionnaires) && sizeof($questionnaires) > 0)
-      <table class="table">
-        <thead class="thead-light">
-          <tr>
-            <th scope="col">Title</th>
-            <th scope="col">Creation Date</th>
-            <th scope="col">Status</th>
-            <th scope="col">Responses</th>
-          </tr>
-        </thead>
-        <tbody>
-          @foreach ($questionnaires as $questionnaire)
-            <tr>
-              <th scope="row" name="{{$questionnaire->title}}" onclick="location.href='{{"/questionnaires/edit/" . $questionnaire->id}}'">{{$questionnaire->title}}</th>
-              <td>{{date('jS F Y', strtotime($questionnaire->created_at))}}</td>
-              <td><i class="fas fa-circle {{$questionnaire->is_public ? 'public' : 'private'}}"></i>{{$questionnaire->is_public ? 'Public' : 'Private'}}</td>
-              <td onclick="location.href='{{"/responses/" . $questionnaire->id}}'">
+      @foreach ($questionnaires as $questionnaire)
+        <div class="questionnaire-entry">
+          <div class="left">
+            <h1 scope="row" name="{{$questionnaire->title}}" onclick="location.href='{{"/questionnaires/edit/" . $questionnaire->id}}'">{{$questionnaire->title}}</h1>
+            <p>{{date('jS F Y', strtotime($questionnaire->created_at))}}</p>
+            <button type="button" onclick="location.href='{{"/questionnaires/edit/" . $questionnaire->id}}'" class="btn btn-secondary">Edit</button>
+            <button type="button" onclick="location.href='{{"/responses/" . $questionnaire->id}}'" class="btn btn-secondary btn-2">View Responses</button>
+          </div>
+          <div class="right">
+            <div></div>
+            <div>
+              <p class="resp-val" onclick="location.href='{{"/responses/" . $questionnaire->id}}'">
                 <?php $resp_val = 0; ?>
                 @foreach ($questionnaire->questions as $question)
                   <?php
                     $resp_val += sizeof($question->responses);
                   ?>
                 @endforeach
-                {{ $resp_val }}
-              </td>
-            </tr>
-          @endforeach
-        </tbody>
-      </table>
-
+                {{ $resp_val }} Responses
+              </p>
+              <p class="is_public"><i class="fas fa-circle {{$questionnaire->is_public ? 'public' : 'private'}}"></i>{{$questionnaire->is_public ? 'Public' : 'Private'}}</p>
+            </div>
+            <div></div>
+          </div>
+        </div>
+      @endforeach
     @else
       <p>No Questionnaires to show</p>
     @endif

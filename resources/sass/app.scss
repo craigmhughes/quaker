@@ -34,16 +34,18 @@
 }
 
 body {
-  background: #fff;
+  background: #e9ecef;
   height: 100%;
 }
 
 .btn-primary {
   background: $brand-color;
-  padding: 10px 30px;
-  border-radius: 30px;
+  padding: 20px 30px;
+  border-radius: 0px;
   outline: none;
   border: none;
+  font-size: 0.7rem;
+  font-weight: 500;
 
   & > a {
     color: #fff;

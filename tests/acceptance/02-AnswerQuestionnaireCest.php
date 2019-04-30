@@ -4,8 +4,8 @@ class AnswerQuestionnaireCest
 {
     public function _before(AcceptanceTester $I)
     {
-      // NOTE: Make sure questionnaire with ID of 5 is set to public.
-      $I->amOnPage('/questionnaires/answer/5');
+      // NOTE: Make sure questionnaire with ID of 6 is set to public.
+      $I->amOnPage('/questionnaires/answer/6');
     }
 
     // tests
@@ -14,7 +14,7 @@ class AnswerQuestionnaireCest
       /*   Only answer first in list. There will always be one question.
        *   Build answer form to create a response entry based on total answers given.
        */
-      $I->fillField('response[0][response]', 'Lorem Ipsum');
+      $I->fillField('response[1][response]', 'Lorem Ipsum');
 
       $I->click('Save');
       $I->seeCurrentURLEquals('/');
