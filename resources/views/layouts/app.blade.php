@@ -59,6 +59,7 @@
         </div>
       </div>
     </nav>
+    @yield('err')
 
     <main role="main" class="py-4">
       <div class="container">

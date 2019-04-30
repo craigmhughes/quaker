@@ -10307,6 +10307,7 @@ nav.navbar {
   background: #fff;
   height: auto !important;
   padding: 2em 0;
+  box-shadow: 0 20px 10px rgba(0, 0, 0, 0.01);
 }
 nav.navbar > .container {
   width: 100%;
@@ -10334,6 +10335,18 @@ nav.navbar ul.navbar-nav > li.primary > a {
 }
 nav.navbar ul.navbar-nav > li > a {
   color: #b0aeae;
+}
+
+.error-nav {
+  width: 100%;
+  background: #e5474c;
+  color: #fff;
+  text-align: center;
+  padding: 0.5em 0;
+}
+.error-nav p {
+  margin: 0;
+  font-weight: 500;
 }
 
 #landing-page {
@@ -10385,6 +10398,7 @@ nav.navbar ul.navbar-nav > li > a {
   border-left: 10px solid #e3e3e3;
   border-radius: 5px;
   transition-duration: 0.4s;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 #page-content > .questionnaire-entry:hover {
   border-left: 10px solid #2068dd;
@@ -10584,7 +10598,7 @@ textarea {
 }
 
 #questionnaire-container {
-  width: 70%;
+  width: 80%;
   min-width: 300px;
   max-width: 1800px;
   margin: 0 auto;
@@ -10592,11 +10606,13 @@ textarea {
 #questionnaire-container > #questionnaire-form {
   width: 100%;
   background: #fff;
+  border-radius: 5px;
+  box-shadow: 0 20px 20px rgba(0, 0, 0, 0.1);
 }
 #questionnaire-container > #questionnaire-form > .row-head {
   margin: 0;
   margin-bottom: 2.5em;
-  padding-left: 2em;
+  padding: 1em 3em;
 }
 #questionnaire-container > #questionnaire-form > .row-head > h3.title {
   font-size: 1.25em;

@@ -101,7 +101,7 @@ textarea {
 }
 
 #questionnaire-container {
-  width: 70%;
+  width: 80%;
   min-width: 300px;
   max-width: 1800px;
   margin: 0 auto;
@@ -109,11 +109,13 @@ textarea {
   & > #questionnaire-form {
     width: 100%;
     background: #fff;
+    border-radius: 5px;
+    box-shadow: 0 20px 20px rgba(0,0,0,0.1);
 
     & > .row-head {
       margin: 0;
       margin-bottom: 2.5em;
-      padding-left: 2em;
+      padding: 1em 3em;
 
 
       & > h3.title {

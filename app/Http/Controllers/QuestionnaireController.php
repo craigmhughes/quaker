@@ -7,6 +7,7 @@ use App\Questionnaire;
 use App\Question;
 use App\Option;
 use Auth;
+use Redirect;
 
 class QuestionnaireController extends Controller
 {
@@ -66,6 +67,16 @@ class QuestionnaireController extends Controller
           'questions' => 'required',
           'is_public' => 'nullable',
         ]);
+
+        foreach($request['questions'] as $question){
+          if($question['type'] == "closed"){
+            foreach($question['options'] as $option){
+              if($option['title'] == null || strlen($option['title']) < 1){
+                return Redirect::back()->withErrors(['Found Null option, please fix and resubmit.']);
+              }
+            }
+          }
+        }
 
         $questionnaire = Questionnaire::create([
           'title' => $request['title'],
@@ -163,6 +174,16 @@ class QuestionnaireController extends Controller
           'description' => 'nullable',
           'questions' => 'required'
         ]);
+
+        foreach($request['questions'] as $question){
+          if($question['type'] == "closed"){
+            foreach($question['options'] as $option){
+              if($option['title'] == null || strlen($option['title']) < 1){
+                return Redirect::back()->withErrors(['Found Null option, please fix and resubmit.']);
+              }
+            }
+          }
+        }
 
         // dd($edit);
 
@@ -275,14 +296,18 @@ class QuestionnaireController extends Controller
 
 
             } else if($edit['questions'][$i]['type'] == "closed"){
-
-                foreach($edit['questions'][$i]['options'] as $option){
-                  $question->options()->create([
-                    'question_id' => $question['id'],
-                    'option' => $option['title'],
-                    'order_no' => 0,
-                  ]);
+                if(isset($edit['questions'][$i]['options'])){
+                  foreach($edit['questions'][$i]['options'] as $option){
+                    $question->options()->create([
+                      'question_id' => $question['id'],
+                      'option' => $option['title'],
+                      'order_no' => 0,
+                    ]);
+                  }
+                } else {
+                  return Redirect::back()->withErrors(['err', 'Found Null option, please fix and resubmit.']);
                 }
+
             } else if ($edit['questions'][$i]['type'] == "open" && $question["type"] == "closed"){
               $question->options()->delete();
             }

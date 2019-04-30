@@ -9,8 +9,17 @@
   <script src="{{ asset('js/delete-questionnaire.js') }}" defer></script>
 @endsection
 
-@section('content')
+@if($errors->any())
+  @section('err')
+    <div class="error-nav">
+      <div class="container">
+        <p>{{$errors->first()}}</p>
+      </div>
+    </div>
+  @endsection
+@endif
 
+@section('content')
   @isset($edit)
     <div id="overlay" class="hidden">
       <div id="delete-modal">
