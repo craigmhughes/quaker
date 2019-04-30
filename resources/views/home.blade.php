@@ -4,6 +4,16 @@
   Dashboard
 @endsection
 
+@if (session()->has('success'))
+  @section('err')
+    <div class="success-nav">
+      <div class="container">
+        <p>{{session()->get('success')}}</p>
+      </div>
+    </div>
+  @endsection
+@endif
+
 @section('content')
   <div id="page-content" class="row justify-content-start">
     <div class="row-head">

@@ -48,15 +48,22 @@ nav.navbar {
 
 }
 
-.error-nav {
+.error-nav, .success-nav {
   width: 100%;
-  background: #e5474c;
   color: #fff;
   text-align: center;
-  padding: 0.5em 0;
+  padding: 1em 0;
 
   & p {
     margin: 0;
     font-weight: 500;
   }
+}
+
+.error-nav {
+  background: #e5474c;
+}
+
+.success-nav {
+  background: #51c77d;
 }

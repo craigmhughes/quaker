@@ -111,7 +111,7 @@ class QuestionnaireController extends Controller
 
 
 
-        return redirect('home');
+        return redirect('home')->with('success', 'Created New Questionnaire');
     }
 
     /**
@@ -177,6 +177,10 @@ class QuestionnaireController extends Controller
 
         foreach($request['questions'] as $question){
           if($question['type'] == "closed"){
+            if(!isset($question['options'])){
+              return Redirect::back()->withErrors(['Found Null option, please fix and resubmit.']);
+            }
+
             foreach($question['options'] as $option){
               if($option['title'] == null || strlen($option['title']) < 1){
                 return Redirect::back()->withErrors(['Found Null option, please fix and resubmit.']);
@@ -348,7 +352,7 @@ class QuestionnaireController extends Controller
 
         }
 
-        return redirect('/home');
+        return redirect('/home')->with('success', 'Updated Questionnaire');
 
 
     }
@@ -369,6 +373,6 @@ class QuestionnaireController extends Controller
         $questionnaire->delete();
       }
 
-      return redirect('/home');
+      return redirect('/home')->with('success', 'Deleted Questionnaire');
     }
 }
