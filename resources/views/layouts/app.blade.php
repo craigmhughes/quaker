@@ -23,7 +23,7 @@
     @yield('include-styles')
 </head>
 <body>
-  <div id="app">
+  <div id="app" class="@yield('app-class')">
     <nav class="navbar navbar-expand-md">
       <div class="container">
         <a class="navbar-brand" @guest href="/" @else href="/home" @endif ><img src="{{asset('img/qmaker.svg')}}" width="100"></a>

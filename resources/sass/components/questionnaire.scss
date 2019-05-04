@@ -3,6 +3,35 @@ nav.navbar, #questionnaire-container {
   transition: 0.8s;
 }
 
+#answer-link {
+  background: #51c77d;
+  color: #fff;
+  padding: 10px 30px;
+  text-align: center;
+  font-weight: 500;
+  transition-duration: 0.4s;
+  opacity: 0;
+
+  & > span {
+    text-decoration: underline;
+    font-weight: 400;
+    cursor: pointer;
+  }
+
+  & > .copy {
+    text-decoration: none;
+    background: #fff;
+    color: #51c77d;
+    font-weight: 600;
+    padding: 0 15px;
+    border-radius: 10px;
+    opacity: 0;
+    transition-duration: 0.4s;
+    margin-left: 10px;
+    margin-right: -60px;
+  }
+}
+
 
 #overlay {
   position: fixed;
@@ -111,6 +140,7 @@ textarea {
     background: #fff;
     border-radius: 5px;
     box-shadow: 0 20px 20px rgba(0,0,0,0.1);
+    padding-bottom: 2em;
 
     & > .row-head {
       margin: 0;

@@ -10362,6 +10362,7 @@ nav.navbar ul.navbar-nav > li > a {
 
 #intro-message {
   margin-top: 15em;
+  text-align: center;
   font-family: "Nunito", sans-serif;
 }
 #intro-message > h1 {
@@ -10510,6 +10511,33 @@ nav.navbar, #questionnaire-container {
   transition: 0.8s;
 }
 
+#answer-link {
+  background: #51c77d;
+  color: #fff;
+  padding: 10px 30px;
+  text-align: center;
+  font-weight: 500;
+  transition-duration: 0.4s;
+  opacity: 0;
+}
+#answer-link > span {
+  text-decoration: underline;
+  font-weight: 400;
+  cursor: pointer;
+}
+#answer-link > .copy {
+  text-decoration: none;
+  background: #fff;
+  color: #51c77d;
+  font-weight: 600;
+  padding: 0 15px;
+  border-radius: 10px;
+  opacity: 0;
+  transition-duration: 0.4s;
+  margin-left: 10px;
+  margin-right: -60px;
+}
+
 #overlay {
   position: fixed;
   width: 100%;
@@ -10611,6 +10639,7 @@ textarea {
   background: #fff;
   border-radius: 5px;
   box-shadow: 0 20px 20px rgba(0, 0, 0, 0.1);
+  padding-bottom: 2em;
 }
 #questionnaire-container > #questionnaire-form > .row-head {
   margin: 0;
@@ -10810,6 +10839,46 @@ textarea {
 }
 #questionnaire-container.view > #questionnaire-form > #question-section > .question {
   padding-bottom: 0;
+}
+
+#null_responses {
+  text-align: center;
+  background: #2068dd;
+  color: #fff;
+  padding: 10px 0;
+}
+
+.responses-app > main > .container {
+  background: #fff;
+  padding: 2em;
+}
+
+.response {
+  border-bottom: 1px solid grey;
+  width: 100% !important;
+  padding: 2em;
+}
+.response > h1 {
+  letter-spacing: -0.05em;
+  font-weight: 400;
+}
+.response > p {
+  text-transform: uppercase;
+  font-size: 0.7em;
+  letter-spacing: 0.1em;
+  color: grey;
+}
+.response > .open-responses > p > span {
+  color: #2068dd;
+  border: 1px solid #2068dd;
+  padding: 5px 12.5px;
+  border-radius: 50px;
+  margin-right: 20px;
+}
+
+.chart-element {
+  max-width: 350px;
+  margin-bottom: 2em;
 }
 
 .navbar-laravel {

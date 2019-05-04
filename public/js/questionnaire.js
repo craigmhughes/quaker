@@ -329,3 +329,46 @@ jQuery.each(jQuery('textarea[data-autoresize]'), function() {
 
     jQuery(this).on('keyup input', function() { resizeTextarea(this); }).removeAttr('data-autoresize');
 });
+
+
+document.getElementById("answer-link").addEventListener("click", ()=>{
+  let copy_text = document.getElementById("answer-link").getElementsByClassName("copy")[0];
+  let public_link = document.getElementById("answer-link").getElementsByTagName("span")[0];
+
+  copyStringToClipboard(public_link.innerText);
+
+  copy_text.style.opacity = 1;
+  copy_text.style.marginRight = 0;
+  setTimeout(()=>{
+    copy_text.style.opacity = 0;
+    copy_text.style.marginRight = "-60px";
+  }, 2000);
+});
+
+function copyStringToClipboard (str) {
+   // Create new element
+   var el = document.createElement('textarea');
+   // Set value (string to be copied)
+   el.value = str;
+   // Set non-editable to avoid focus and move outside of view
+   el.setAttribute('readonly', '');
+   el.style = {position: 'absolute', left: '-9999px'};
+   document.body.appendChild(el);
+   // Select text inside element
+   el.select();
+   // Copy text to clipboard
+   document.execCommand('copy');
+   // Remove temporary element
+   document.body.removeChild(el);
+}
+
+function check_answer_link(){
+  document.getElementById("answer-link").style.opacity = document.getElementById("is-public-switch").checked ? 1 : 0;
+  document.getElementById("answer-link").style.marginTop = document.getElementById("is-public-switch").checked ? 0 : "-30px";
+}
+
+document.getElementById("is-public-switch").addEventListener("click", ()=>{ check_answer_link() });
+
+document.getElementById("answer-link").getElementsByTagName("span")[0].innerText = window.location.href.replace("edit", "answer");
+
+check_answer_link();

@@ -1,3 +1,51 @@
-.chart {
+#null_responses {
+  text-align: center;
+  background: $brand_color;
+  color: #fff;
+  padding: 10px 0;
+}
 
+.responses-app {
+
+  & > main > .container {
+    background: #fff;
+    padding: 2em;
+  }
+}
+
+.response {
+  border-bottom: 1px solid grey;
+  width: 100%!important;
+  padding: 2em;
+
+  & > h1 {
+    letter-spacing: -0.05em;
+    font-weight: 400;
+  }
+
+  & > p {
+    text-transform: uppercase;
+    font-size: 0.7em;
+    letter-spacing: 0.1em;
+    color: grey;
+  }
+
+  & > .open-responses {
+
+    & > p {
+
+      & > span {
+        color: $brand_color;
+        border: 1px solid $brand_color;
+        padding: 5px 12.5px;
+        border-radius: 50px;
+        margin-right: 20px;
+      }
+    }
+  }
+}
+
+.chart-element {
+  max-width: 350px;
+  margin-bottom: 2em;
 }

@@ -9,6 +9,10 @@
   <script src="{{asset('js/response-chart.js')}}" defer></script>
 @endsection
 
+@section('app-class')
+responses-app
+@endsection
+
 @section('content')
   @if (!isset($responses) || count($responses) < 1)
     <script>window.location = "/home";</script>
@@ -64,10 +68,11 @@
     ?>
 
     {{--------------------------- RENDER CHARTS ------------------------------}}
-
+    <p id="null_responses">If nothing shows, please reload.</p>
 
     <?php for($i = 0; $i < count($chart_data); $i++){ ?>
       <div class="response">
+        <p>Question {{$i+1}}</p>
         <h1>{{$question_data[$i]->title}}</h1>
         <input type="hidden" value="{{$question_data[$i]->id}}" class="question-id">
         <p>{{count($question_data[$i]->responses)}} Responses</p>

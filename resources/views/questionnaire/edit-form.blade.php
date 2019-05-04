@@ -31,6 +31,7 @@
   @endisset
 
   <div id="questionnaire-container">
+    <p id="answer-link">Save changes & share this link: <span></span> <span class="copy">Copied</span></p>
 
     {!! Form::open(array('action' => isset($edit) ?
       ["QuestionnaireController@update", $edit->id] : "QuestionnaireController@store", 'id' => 'questionnaire-form')) !!}
@@ -43,7 +44,7 @@
           <div class="ml-auto right">
             <p class=" ml-auto">Make Public</p>
             <div class="pretty p-switch p-fill">
-                <input type="checkbox" name="is_public" {{isset($edit) && $edit->is_public == 1 ? 'checked' : ''}}/>
+                <input type="checkbox" name="is_public" id="is-public-switch" {{isset($edit) && $edit->is_public == 1 ? 'checked' : ''}}/>
                 <div class="state p-success">
                     <label> </label>
                 </div>

@@ -95,8 +95,14 @@ function generate_charts(){
       console.log(total_labels[i].length);
 
       for (var j = 0; j < total_labels[i].length; j++) {
-        total_resp_div.innerHTML += `<p>${total_labels[i][j]}</p>`;
+        total_resp_div.innerHTML += `<p><span>${j+1}</span>${total_labels[i][j]}</p>`;
       }
     }
   }
 }
+
+function delete_warning(){
+  document.getElementById("null_responses").parentNode.removeChild(document.getElementById("null_responses"));
+}
+
+delete_warning();
