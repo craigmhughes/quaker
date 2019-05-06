@@ -51,8 +51,7 @@ class ResponseController extends Controller
           }
         }
 
-        // TODO: create completed page
-        return redirect('/')->with(['resp' => true]);
+        return redirect('/')->with(['resp' => true, 'success' => 'Thank you for your time']);
     }
 
     /**
