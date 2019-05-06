@@ -117,7 +117,11 @@ function create_question(){
   update_question_count();
 }
 
-
+/**
+  * Remove question
+  *
+  * @param el = targeted question element.
+  */
 function remove_question(el){
   let el_question;
   let parent_index = 0;
@@ -140,6 +144,7 @@ function remove_question(el){
 
     update_question_count();
 
+    // Reassign indexes ready for post request.
     for (let i = 0; i < questions.length; i++){
         // Re-reads index. Assigns new index to inputs.
         questions[i].getElementsByClassName('title')[0].setAttribute('name', `questions[${i}][title]`);
@@ -158,6 +163,11 @@ function remove_question(el){
   }
 }
 
+/**
+  * Create option
+  *
+  * @param el = targeted question element
+  */
 function create_option(el){
 
   let q_inputs = el.getElementsByClassName('question-inputs')[0];

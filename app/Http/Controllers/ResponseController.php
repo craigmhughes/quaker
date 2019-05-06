@@ -36,7 +36,6 @@ class ResponseController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request);
         for ($i=0; $i < count($request->response); $i++) {
           $resp = $request->response[$i];
 
@@ -78,6 +77,7 @@ class ResponseController extends Controller
     }
 
     public function get(Request $request, $id){
+      // Only accept ajax request
       if($request->ajax()){
         $resp = [];
         foreach( Response::all()->where('question_id', $id) as $response ){

@@ -1,9 +1,11 @@
 @extends('layouts.app')
 
+{{-- Extra Styles --}}
 @section('include-styles')
   <link href="{{ asset('css/home.css') }}" rel="stylesheet">
 @endsection
 
+{{-- Success Message --}}
 @if (session()->has('success'))
   @section('err')
     <div class="success-nav">
@@ -14,6 +16,7 @@
   @endsection
 @endif
 
+{{-- Content --}}
 @section('content')
   <section id="landing-page">
     <div id="intro-message">

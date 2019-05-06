@@ -20,6 +20,7 @@
 @endif
 
 @section('content')
+  {{-- Confirmation overlay --}}
   @isset($edit)
     <div id="overlay" class="hidden">
       <div id="delete-modal">
@@ -30,6 +31,7 @@
     </div>
   @endisset
 
+  {{-- Questionnaire form --}}
   <div id="questionnaire-container">
     <p id="answer-link">Save changes & share this link: <span></span> <span class="copy">Copied</span></p>
 

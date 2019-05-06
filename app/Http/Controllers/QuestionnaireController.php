@@ -57,7 +57,6 @@ class QuestionnaireController extends Controller
     public function store(Request $request)
     {
         $this->middleware('auth');
-        // dd($request);
 
         $is_public = isset($request['is_public']) ? 1 : 0;
 
@@ -68,6 +67,7 @@ class QuestionnaireController extends Controller
           'is_public' => 'nullable',
         ]);
 
+        // Iterate over questions and check for nulls.
         foreach($request['questions'] as $question){
           if($question['title'] == null || strlen($question['title']) < 1){
             return Redirect::back()->withErrors(['Found Null question title, please fix and resubmit.']);
@@ -78,6 +78,7 @@ class QuestionnaireController extends Controller
               return Redirect::back()->withErrors(['Found Null option, please fix and resubmit.']);
             }
 
+            // Loop over and check options
             foreach($question['options'] as $option){
               if($option['title'] == null || strlen($option['title']) < 1){
                 return Redirect::back()->withErrors(['Found Null option, please fix and resubmit.']);
@@ -93,8 +94,7 @@ class QuestionnaireController extends Controller
           'is_public' => $is_public
         ]);
 
-        // dd($request['questions']);
-
+        // Create questions and options
         foreach($request['questions'] as $question){
 
           $new_question = $questionnaire->questions()->create([
