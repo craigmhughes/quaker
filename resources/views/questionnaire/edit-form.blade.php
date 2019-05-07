@@ -72,6 +72,7 @@
           'maxlength' => '100',
           'data-autoresize' => '',
           'rows' => '1',
+          'required' => '',
           ]) !!}
 
         {!! Form::textarea('description', isset($edit) ? $edit->description : null, [
@@ -92,7 +93,7 @@
                 <div class="question" value="'. $i .'">
                   <div class="row">
 
-                    <textarea type="text" data-autoresize rows="1"  class="title" name="questions[' . $i . '][title]" autocomplete="off" placeholder="Untitled Open Question">' . $question->title . '</textarea>
+                    <textarea required type="text" data-autoresize rows="1"  class="title" name="questions[' . $i . '][title]" autocomplete="off" placeholder="Untitled Open Question">' . $question->title . '</textarea>
 
                     <div class="question-select ml-auto">
                       <select class="q-select">';
@@ -134,7 +135,7 @@
                              <label></label>
                          </div>
                        </div>
-                       <input value="'.$option->option.'" class="closed-value title"  autocomplete="off" name="questions['.$i.'][options]['.$j.'][title]" placeholder="Option">
+                       <input required value="'.$option->option.'" class="closed-value title"  autocomplete="off" name="questions['.$i.'][options]['.$j.'][title]" placeholder="Option">
                        <input type="hidden" value="'.$option->id.'" class="closed-value option-id" name="questions['.$i.'][options]['.$j.'][id]" >
                        <i class="fas fa-minus remove-option"></i>
                      </div>

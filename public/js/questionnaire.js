@@ -24,7 +24,7 @@ var get_question_div = ()=>{
   return `
   <div class="question">
     <div class="row">
-      <textarea maxlength="80" data-autoresize rows="1" class="title" name="questions[${question_count}][title]" autocomplete="off" placeholder="Untitled Open Question"></textarea>
+      <textarea required maxlength="80" data-autoresize rows="1" class="title" name="questions[${question_count}][title]" autocomplete="off" placeholder="Untitled Open Question"></textarea>
       ${select_div}
     </div>
     <input type="hidden" class="q-type" name="questions[${question_count}][type]" value="open"/>
@@ -45,7 +45,7 @@ var get_closed_element = (input_count, el)=>{
           <label></label>
       </div>
     </div>
-    <input class="closed-value title" autocomplete="off" name="questions[${typeof el === 'undefined' ? get_question_count()-1 : el}][options][${input_count}][title]" placeholder="Option">
+    <input required class="closed-value title" autocomplete="off" name="questions[${typeof el === 'undefined' ? get_question_count()-1 : el}][options][${input_count}][title]" placeholder="Option">
     <i class="fas fa-minus remove-option"></i>
   </div>
 `};
