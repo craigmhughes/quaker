@@ -1,0 +1,61 @@
+.home {
+    margin: 0;
+
+    #landing-page {
+        background-color: $brand_color;
+        color: #fff;
+
+        width: calc(100% - 2em);
+        height: 100%;
+        padding: 1em;
+        display: grid;
+        grid-template-rows: 7fr 3fr;
+
+        position: fixed;
+        left: 0;
+        top: 0;
+
+        .intro-message {
+            display: flex;
+            align-items: center;
+            text-align: center;
+
+            div {
+                width: 100%;
+                line-height: 110%;
+            }
+
+            h1 {
+                font-size: 3.75em;
+                font-weight: 300;
+                letter-spacing: -0.025em;
+            }
+
+            .highlight {
+                background: #ED1852;
+                padding: 0.5em 1.5em;
+                border-radius: 5em;
+                font-size: 0.9em;
+                display: inline;
+            }
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            
+            a {
+                width: 100%;
+                margin: 0.7em 0;
+
+                &.btn {
+                    width: calc(100% - 4em);
+                }
+            }
+        }
+    }
+}

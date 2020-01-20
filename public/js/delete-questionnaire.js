@@ -4,6 +4,7 @@ let switchOverlay = ()=>{
   overlay.className = overlay.className == "hidden" ? "" : "hidden";
   document.querySelector("nav.navbar").style.filter = overlay.className == "hidden" ? "" : "blur(4px)";
   document.getElementById('questionnaire-container').style.filter = overlay.className == "hidden" ? "" : "blur(4px)";
+  document.getElementById('save-bar').style.filter = overlay.className == "hidden" ? "" : "blur(4px)";
 };
 
 overlay.addEventListener('click', (e)=>{

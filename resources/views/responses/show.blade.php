@@ -10,7 +10,7 @@
 @endsection
 
 @section('app-class')
-responses-app
+responses-app dashboard
 @endsection
 
 @section('content')

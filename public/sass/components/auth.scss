@@ -1,0 +1,106 @@
+.auth-page {
+    background: $brand_color;
+    color: #fff;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+
+    display: grid;
+    grid-template-rows: 3fr 7fr;
+    text-align: center;
+
+    overflow-y: scroll;
+
+    &.register {
+        background: #fff;
+        color: $brand_color;
+
+        & > form {
+
+            & .form-footer {
+                display: block;
+                padding-top: 1em;
+
+                & > .btn {
+                    padding: 1em 0;
+                }
+            }
+            
+            & > div {
+
+                & > input {
+                    border-bottom: 1.5px solid $brand_color;
+                    color: $brand_color;
+                    height: 1em;
+
+                    &::placeholder {
+                        color: $brand_color;
+                    }
+                }
+            }
+        }
+
+    }
+
+    h1 {
+        font-size: 3.75em;
+        font-weight: 300;
+        letter-spacing: -0.025em;
+    }
+
+    .form-check {
+        text-align: center;
+        margin: 1em 0;
+    }
+
+    & > form {
+        width: calc(100% - 4em);
+        max-width: 600px;
+        margin: 0 auto;
+
+        display: grid;
+        grid-template-rows: 7fr 3fr;
+
+        & .form-footer {
+            display: grid;
+
+            .btn {
+                padding: 0;
+                margin-bottom: 1em;
+            }
+        }
+
+        & > div {
+            width: 100%;
+            display: block;
+            grid-template-rows: auto;
+            text-align: center;
+
+            & > button {
+                width: 100%;
+            }
+
+            & > input {
+                background: none;
+                border:none;
+                border-bottom: 1.5px solid #fff;
+                font-size: 1em;
+                color: #fff;
+                padding: 1em 2em;
+                margin: 1em 0;
+                height: 2em;
+                width: calc(100% - 4em);
+    
+    
+                &::placeholder {
+                    color: #fff;
+                    opacity: 1;
+                    font-family: $primary_font;
+                    text-align: center;
+                }
+            }
+        }
+    }
+}

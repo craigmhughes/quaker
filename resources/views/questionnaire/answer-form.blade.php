@@ -8,17 +8,19 @@
   <script src="{{ asset('js/response.js') }}" defer></script>
 @endsection
 
+@section('app-class')
+answer-form
+@endsection
+
 @section('content')
   <!-- TODO: Change input values to be readable for the ResponseController -->
   <div id="questionnaire-container" class="view">
 
     {!! Form::open(array('action' => "ResponseController@store", 'id' => 'questionnaire-form')) !!}
         {{ csrf_field() }}
-        <div class="row row-head d-flex">
-          <h3 class="title">Answer Questionnaire</h3>
-          <div class="ml-auto right">
-            {!! Form::submit('Save', ['class' => 'btn btn-primary ml-auto']) !!}
-          </div>
+        <div class="header-text">
+          <p>Answer Questionnaire</p>
+          {!! Form::submit('Submit Questionnaire', ['class' => 'btn btn-primary', 'id' => 'save-q']) !!}
         </div>
 
         <h1 class="title">{{$view->title}}</h1>
@@ -32,7 +34,7 @@
                 echo '
                 <div class="question">
                   <div class="row">
-
+                    <p class="subhead">Question ' . ($i+1) . '</p>
                     <h3 class="title">' . $question->title . '</h3>
 
                   </div>

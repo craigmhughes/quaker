@@ -19,10 +19,20 @@
 {{-- Content --}}
 @section('content')
   <section id="landing-page">
-    <div id="intro-message">
-      <h1>Welcome to <b>QMaker</b></h1>
-      <br/>
-      <p>Create & Answer Questionnaires. Results rendered using ChartJS.</p>
+    <div class="intro-message">
+      <div>
+        <h1>Quaker</h1>
+        <p>The Questionnaire Maker</p>
+        <p class="highlight">Sample Project by Craig Hughes</p>
+      </div>
+    </div>
+    <div class="footer-links">
+      <a href='/login' class="btn secondary">Log in</a>
+      <a href='/register'>Don't have an account?</a>
     </div>
   </section>
+@endsection
+
+@section('app-class')
+  home
 @endsection

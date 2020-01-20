@@ -19,17 +19,34 @@
   @endsection
 @endif
 
+@section('app-class')
+edit-form
+@endsection
+
 @section('content')
   {{-- Confirmation overlay --}}
   @isset($edit)
     <div id="overlay" class="hidden">
       <div id="delete-modal">
         <p>Are you sure you want to delete this questionnaire?</p>
-        <button type="button" class="primary-btn">Yes</button>
-        <button type="button">No</button>
+        <button type="button" class="primary btn">Yes</button>
+        <button type="button" class="btn secondary">No</button>
       </div>
     </div>
   @endisset
+
+  <div id="save-bar">
+    <div class="left">
+      <a href="/home"><i class="fas fa-chevron-left"></i> Back</a>
+    </div>
+    <div class="right">
+      @isset($edit)
+        <button id="delete-questionnaire" class="btn secondary" type="button"><i class="fas fa-trash"></i></button>
+      @endisset
+      {!! Form::button('<i class="fas fa-save"></i> Save', ['type' => 'submit', 'form' => 'questionnaire-form', 'class' => 'btn btn primary ml-auto']) !!}
+    <div>
+  </div>
+</div></div>
 
   {{-- Questionnaire form --}}
   <div id="questionnaire-container">
@@ -43,28 +60,8 @@
         @endisset
         <div class="row row-head d-flex">
           <h3 class="title">{{isset($edit) ? 'Edit' : 'New'}} Questionnaire</h3>
-          <div class="ml-auto right">
-            <p class=" ml-auto">Make Public</p>
-            <div class="pretty p-switch p-fill">
-                <input type="checkbox" name="is_public" id="is-public-switch" {{isset($edit) && $edit->is_public == 1 ? 'checked' : ''}}/>
-                <div class="state p-success">
-                    <label> </label>
-                </div>
-            </div>
 
-            @isset($edit)
-              <button id="delete-questionnaire" type="button"><i class="fas fa-trash"></i> Delete</button>
-            @endisset
-            {!! Form::submit('Save', ['class' => 'btn btn-primary ml-auto']) !!}
-          </div>
-          {{-- <button  class="btn btn-primary ml-auto"><a href="{{ route('questionnaire/') }}">Save</a></button> --}}
-        </div>
-        @isset($edit)
-          <input type="hidden" name="id" value="{{$edit->id}}"/>
-        @endisset
-
-
-        {!! Form::textarea('title',  isset($edit) ? $edit->title : null, [
+          {!! Form::textarea('title',  isset($edit) ? $edit->title : null, [
           'class' => 'large-8 columns title',
           'id' => 'questionnaire-title',
           'placeholder' => 'Questionnaire Title',
@@ -75,13 +72,28 @@
           'required' => '',
           ]) !!}
 
-        {!! Form::textarea('description', isset($edit) ? $edit->description : null, [
+          {!! Form::textarea('description', isset($edit) ? $edit->description : null, [
           'class' => 'large-8 columns desc',
           'placeholder' => 'Enter Description Here',
           'maxlength' => '150',
           'data-autoresize' => '',
           'rows' => '1',
           ]) !!}
+
+          <div class="public-bar">
+            <p>Make Public</p>
+            <div class="pretty p-switch p-fill">
+                <input type="checkbox" name="is_public" id="is-public-switch" {{isset($edit) && $edit->is_public == 1 ? 'checked' : ''}}/>
+                <div class="state p-success">
+                    <label> </label>
+                </div>
+            </div>
+          </div>
+          {{-- <button  class="btn btn-primary ml-auto"><a href="{{ route('questionnaire/') }}">Save</a></button> --}}
+        </div>
+        @isset($edit)
+          <input type="hidden" name="id" value="{{$edit->id}}"/>
+        @endisset
 
         <div id="question-section">
           @isset($edit)
@@ -96,7 +108,8 @@
                     <textarea required type="text" data-autoresize rows="1"  class="title" name="questions[' . $i . '][title]" autocomplete="off" placeholder="Untitled Open Question">' . $question->title . '</textarea>
 
                     <div class="question-select ml-auto">
-                      <select class="q-select">';
+                      Question Type: 
+                      <select class="q-select btn secondary">';
 
                       if($question->type == "open"){
                         echo '
@@ -112,7 +125,6 @@
 
                       echo '
                       </select>
-                      <i class="fas fa-chevron-down"></i>
                     </div>
 
                   </div>
@@ -143,18 +155,18 @@
                     }
 
                     echo '</div>
-                    <button class="add-option" type="button"><i class="fas fa-plus"></i> Add Option</button>';
+                    <button class="add-option btn primary" type="button"><i class="fas fa-plus"></i> Add Option</button>';
                   }
 
                   echo '
-                  <button class="remove-question" type="button"><i class="fas fa-trash"></i> Remove Question</button>
+                  <button class="remove-question btn secondary" type="button"><i class="fas fa-trash"></i> Remove Question</button>
                 </div>';
               }
             ?>
           @endisset
         </div>
 
-        <button id="add-q" type="button"><i class="fas fa-plus"></i> Add Question</button>
+        <button id="add-q" class="btn primary" type="button"><i class="fas fa-plus"></i> Add Question</button>
 
 
     {!! Form::close() !!}

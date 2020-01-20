@@ -12,11 +12,11 @@ var get_question_count = ()=>{
 // Select Question Type Menu
 var select_div = `
   <div class="question-select ml-auto">
-    <select class="q-select">
+    Question Type:
+    <select class="q-select btn secondary">
       <option value="open">Open</option>
       <option value="closed">Closed</option>
     </select>
-    <i class="fas fa-chevron-down"></i>
   </div>`;
 
 // Question HTML
@@ -29,7 +29,7 @@ var get_question_div = ()=>{
     </div>
     <input type="hidden" class="q-type" name="questions[${question_count}][type]" value="open"/>
     <div class="question-inputs"></div>
-    <button class="remove-question" type="button"><i class="fas fa-trash"></i> Remove Question</button>
+    <button class="remove-question btn secondary" type="button"><i class="fas fa-trash"></i> Remove Question</button>
 
   </div>`};
 
@@ -267,7 +267,7 @@ document.getElementById('question-section').addEventListener('click', function(e
 
         // Add or remove 'add option' based on question type
         if(question_type === "closed" && parent.getElementsByClassName('add-option').length === 0){
-          parent.innerHTML += `<button class="add-option" type="button"><i class="fas fa-plus"></i> Add Option</button>`;
+          parent.innerHTML += `<button class="add-option btn primary" type="button"><i class="fas fa-plus"></i> Add Option</button>`;
 
         } else if (question_type === "open" && parent.getElementsByClassName('add-option').length > 0){
           parent.removeChild(parent.getElementsByClassName('add-option')[0]);
@@ -278,7 +278,7 @@ document.getElementById('question-section').addEventListener('click', function(e
 
       }
     }
-  } else if (e.target.className === "add-option") {
+  } else if (e.target.className.includes("add-option")) {
     create_option(e.target.parentNode);
 
   } else if (e.target.className.includes("remove-option")) {

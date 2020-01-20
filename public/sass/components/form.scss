@@ -1,0 +1,286 @@
+.edit-form {
+    color: $brand_color;
+
+    .navbar {
+        display: none;
+    }
+
+    .btn {
+        font-size: 0.7em;
+    }
+
+    #overlay {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: 899;
+    }
+
+    #delete-modal {
+        width: 90%;
+        max-width: 600px;
+        background: #fff;
+        padding: 1em;
+        z-index: 900;
+        margin: 0 auto;
+        font-size: 1.5em;
+        border-bottom: 4px solid $brand_color;
+    }
+    
+    main > .container {
+
+        #questionnaire-container {
+            padding-bottom: 4em;
+
+            #answer-link {
+                display: none;
+            }
+
+            #questionnaire-form {
+                h3.title {
+                    font-weight: 400;
+                    padding: 1em 0;
+                    border-bottom: 1px solid $brand_color;
+                }
+
+                .btn > i {
+                    margin-right: 1em;
+                }
+
+                #add-q {
+                    position: fixed;
+                    font-size: 1.25em;
+                    bottom: 0;
+                    left: 0;
+                    right: 0;
+                    margin: 0 auto;
+                    width: 100%;
+                    border-radius: 0;
+                    border: none;
+                    max-width: 700px;
+                }
+
+                #questionnaire-title {
+                    font-size: 3em;
+                    font-weight: 600;
+                    letter-spacing: -0.03em;
+                    width: 100%;
+                    color: $brand_color;
+                    line-height: 110%;
+                    margin-top: 0.5em;
+                }
+
+                .desc {
+                    font-size: 1em;
+                    width: 100%;
+                }
+
+                & textarea, & input {
+                    font-family: $primary_font;
+                    color: $brand_color;
+                    border: none;
+                    max-width: 100%;
+                    resize: none;
+                    outline: none;
+
+                    &:focus {
+                        transition: border 0.2s ease-in-out;
+                        border-bottom: 2px solid $brand_color;
+                    }
+                }
+
+                & textarea {
+                    width: 100%;
+                }
+
+                .public-bar {
+                    display: flex;
+                    border-bottom: 4px solid $brand_color;
+                    margin-bottom: 2em;
+
+                    & > p {
+                        margin-right: 1em;
+                    }
+
+                    & > .pretty > .state {
+                        position: relative;
+                        top: 1.25em;
+                        left: -0.5em;
+                        
+                    }
+                }
+
+                .question {
+                    margin: 2em 0 4em 0;
+
+                    .open-input {
+                        width: calc(100% - 2em);
+                        border: 1px solid grey;
+                        padding: 1em;
+                        font-size: 1em;
+                    }
+
+                    textarea.title {
+                        font-size: 2em;
+                        text-transform: capitalize;
+                    }
+
+                    .question-select {
+                        margin-bottom: 1em;
+                    }
+
+                    .q-select {
+                        font-size: 0.8em;
+                        width: max-content;
+                        cursor: pointer;
+                        padding: 0.5em 1em;
+                        padding-right: 0;
+                        margin-left: 1em;
+                    }
+
+                    .question-inputs {
+                        margin-bottom: 1.5em;
+
+                        .remove-option {
+                            padding: 0.5em;
+                        }
+                    }
+                }
+            }
+        }
+
+        #save-bar {
+            display: grid;
+            grid-template-columns: 2fr 8fr;
+            font-size: 0.8em;
+            padding-top: 1.5em;
+
+            & > .left {
+                display: flex;
+
+                & > a{
+                    display: flex;
+                    align-items: center;
+                    height: auto;
+
+                    & > i {
+                        margin-right: 0.5em;
+                    }
+                }
+            }
+
+            & > .right {
+                height: 100%;
+                text-align: right;
+                width: 100%;
+
+                #delete-questionnaire {
+                    margin: 0 0.5em;
+                }
+
+                .btn {
+                    height: min-content;
+                    font-size: 0.8em;
+
+                    &.primary {
+                        padding-right: 2.5em;
+
+                        & > i {
+                            margin-right: 1em;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.answer-form {
+    .header-text {
+        display: flex;
+        justify-content: space-between;
+        padding: 1em 0;
+    }
+
+    #save-q {
+        position: fixed;
+        font-size: 1.25em;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        width: 100%;
+        border-radius: 0;
+        border: none;
+        max-width: 700px;
+    }
+
+    .navbar {
+        display: none;
+    }
+
+    .btn {
+        font-size: 0.7em;
+    }
+
+    main > .container {
+        
+
+        #questionnaire-container {
+            padding-bottom: 4em;
+
+            #answer-link {
+                display: none;
+            }
+
+            #questionnaire-form {
+                color: $brand_color;
+
+                h1.title {
+                    font-size: 3em;
+                    font-weight: 600;
+                    letter-spacing: -0.03em;
+                    width: 100%;
+                    color: $brand_color;
+                    line-height: 110%;
+                    margin-top: 0.5em;
+                }
+
+                .question {
+                    .subhead {
+                        font-size: 0.8em;
+                        margin: 0;
+                        font-size: 200;
+                    }
+
+                    h3.title {
+                        font-weight: 600;
+                        padding: 0.2em 0;
+                        font-size: 2em;
+                        border-bottom: 1px solid $brand_color;
+                        text-transform: capitalize;
+                        margin-top: 0;
+                    }
+
+                    .question-inputs {
+                        .closed-option {
+                            display: flex;
+                            width: 100%;
+                            text-transform: capitalize;
+
+                            & .title {
+                                width: max-content;
+                                margin: 0;
+
+                                position: relative;
+                                top: -0.8em;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

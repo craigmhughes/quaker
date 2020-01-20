@@ -1,0 +1,56 @@
+.dashboard {
+    color: $brand_color;
+
+
+    #page-content {
+        padding-bottom: 6em;
+
+        & > .title {
+            font-size: 2.5em;
+            letter-spacing: -0.05em;
+            font-weight: 600;
+            margin: 0;
+            line-height: 125%;
+        }
+
+        & > .subtitle {
+            letter-spacing: -0.03em;
+            font-weight: 400;
+            border-bottom: 1px solid $brand_color;
+            padding: 0.5em 0;
+        }
+    }
+
+    .questionnaire-entry {
+        border-bottom: 1px solid #e3e3e3;
+        padding: 1em 0;
+
+        & > .left {
+            font-size: 1.1em;
+
+            h3, p {
+                margin: 0;
+            }
+
+            .fa-circle {
+                font-size: 0.25em;
+                display: inline-flex;
+                vertical-align: middle;
+                margin-top: -2px;
+                margin-right: calc(1.5em + 2px);
+                color: grey;
+
+                &.public {
+                    color: #2DD020;
+                }
+            }
+        }
+
+        & > .right {
+            margin-top: 1em;
+            & > button {
+                font-size: 0.8em;
+            }
+        }
+    }
+}
